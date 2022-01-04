@@ -3,6 +3,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
@@ -11,6 +13,8 @@ import { GuideComponent } from './guide/guide.component';
 import { PublishComponent } from './publish/publish.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+
+import { NewsApiServiceService } from './services/news-api-service.service';
 
 @NgModule({
   declarations: [
@@ -27,9 +31,10 @@ import { ContactComponent } from './contact/contact.component';
     BrowserModule,
     AppRoutingModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [NewsApiServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
