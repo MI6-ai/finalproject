@@ -15,6 +15,7 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 
 import { NewsApiServiceService } from './services/news-api-service.service';
+import { ProductListComponent } from './products/product-list/product-list.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { NewsApiServiceService } from './services/news-api-service.service';
     GuideComponent,
     PublishComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    ProductListComponent,
   ],
   imports: [
     BrowserModule,
