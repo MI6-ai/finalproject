@@ -16,6 +16,7 @@ import { ContactComponent } from './contact/contact.component';
 
 import { NewsApiServiceService } from './services/news-api-service.service';
 import { ProductListComponent } from './products/product-list/product-list.component';
+import { ProductDataService } from './services/product-data.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { ProductListComponent } from './products/product-list/product-list.compo
     FormsModule,
     HttpClientModule
   ],
-  providers: [NewsApiServiceService],
+  providers: [NewsApiServiceService, ProductDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
