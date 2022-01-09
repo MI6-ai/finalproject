@@ -1,4 +1,6 @@
 <p>home works!</p>
 <div *ngFor="let heading of topHeadingDisplay">
-    {{ heading.title }}
+   <h3>{{ heading.title }}</h3> 
+   <img src="{{heading.urlToImage}}" alt="">
+   <p>{{ heading.content }}</p>
 </div>
