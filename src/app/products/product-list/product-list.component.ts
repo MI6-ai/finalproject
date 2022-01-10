@@ -8,7 +8,7 @@ import { ProductDataService } from 'src/app/services/product-data.service';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-  product : string ='';
+  // product : string ='';
   products : {
     name: string,
     rating: number,
@@ -21,12 +21,11 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(
     (params: Params) => {
-      this.product = params['product'];
+      this.ProductDataService.product = params['product'];
+      // console.log(this.ProductDataService.product);
+    this.products = this.ProductDataService.getProducts();
     }
     );
-
-    this.products = this.ProductDataService.getProducts();
-    // console.log(this.products);
   }
 
 }

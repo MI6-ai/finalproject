@@ -1,4 +1,5 @@
 export class ProductDataService {
+    product : string ='';
     
     laptops = [
         {
@@ -13,8 +14,27 @@ export class ProductDataService {
         }
     ];
 
+    mobiles = [
+        {
+            name: 'Iphone 13',
+            rating: 9,
+            price: 799
+        },
+        {
+            name: 'Iphone 13 pro',
+            rating: 9.5,
+            price: 999
+        }
+    ];
+
     getProducts()
     {
+        switch(this.product) {
+            case 'laptops': return this.laptops.slice();
+            break;
+            case 'mobiles': return this.mobiles.slice();
+            break;
+        }
         return this.laptops.slice();
     }
 }
