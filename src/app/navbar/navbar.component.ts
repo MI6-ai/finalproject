@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Event } from '@angular/router';
+import { ActivatedRoute, Event, Router } from '@angular/router';
 import { NewsApiServiceService } from '../services/news-api-service.service';
 
 @Component({
@@ -14,7 +14,9 @@ export class NavbarComponent implements OnInit {
   // leftmenu = ['Home','Products','Guide','Publish','About','Contact']
   searchQuery: string ='';
 
-  constructor(private NewsApiService : NewsApiServiceService) { }
+  constructor(private NewsApiService : NewsApiServiceService,
+    private router : Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     
@@ -22,5 +24,8 @@ export class NavbarComponent implements OnInit {
   SearchF(form: any) {
     this.searchQuery = form.searchBar;
     this.NewsApiService.searchquery = this.searchQuery;
+  }
+  updateHome(){
+    this.router.navigate(['/'], {relativeTo: this.route});
   }
 }

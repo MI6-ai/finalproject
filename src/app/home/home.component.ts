@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { NewsApiServiceService } from "../services/news-api-service.service"
 
 @Component({
@@ -6,7 +6,7 @@ import { NewsApiServiceService } from "../services/news-api-service.service"
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit{
 
   constructor(private service: NewsApiServiceService) { }
 
@@ -21,5 +21,8 @@ export class HomeComponent implements OnInit {
        }
      )
   }
+
+  
+
 
 }
