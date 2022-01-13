@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class NewsApiServiceService {
-  searchquery: string ='mobiles';
+  searchquery: string ='';
 
   constructor(private _http: HttpClient) { }
 

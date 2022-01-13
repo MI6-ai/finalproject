@@ -19,8 +19,8 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     
   }
-  Search(form: NgForm) {
-    console.log(form.value)
+  SearchF(form: any) {
+    this.searchQuery = form.searchBar;
     this.NewsApiService.searchquery = this.searchQuery;
   }
 }
