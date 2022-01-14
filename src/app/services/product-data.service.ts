@@ -37,4 +37,15 @@ export class ProductDataService {
         }
         return this.laptops.slice();
     }
+
+    getProduct(index: number)
+    {
+        switch(this.product) {
+            case 'laptops': return this.laptops[index-1];
+            break;
+            case 'mobiles': return this.mobiles[index-1];
+            break;
+        }
+        return this.laptops[index];
+    }
 }

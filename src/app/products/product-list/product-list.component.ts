@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ProductDataService } from 'src/app/services/product-data.service';
+import { Product } from '../product.model';
 
 @Component({
   selector: 'app-product-list',
@@ -9,11 +10,7 @@ import { ProductDataService } from 'src/app/services/product-data.service';
 })
 export class ProductListComponent implements OnInit {
   // product : string ='';
-  products : {
-    name: string,
-    rating: number,
-    price: number
-  }[] = []
+  products : Product[] = []
 
   constructor(private route : ActivatedRoute,
     private ProductDataService: ProductDataService) { }

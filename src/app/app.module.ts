@@ -17,6 +17,8 @@ import { ContactComponent } from './contact/contact.component';
 import { NewsApiServiceService } from './services/news-api-service.service';
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { ProductDataService } from './services/product-data.service';
+import { ProductDetailComponent } from './products/product-detail/product-detail.component';
+import { ProductItemComponent } from './products/product-list/product-item/product-item.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { ProductDataService } from './services/product-data.service';
     AboutComponent,
     ContactComponent,
     ProductListComponent,
+    ProductDetailComponent,
+    ProductItemComponent,
   ],
   imports: [
     BrowserModule,
