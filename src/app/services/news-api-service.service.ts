@@ -10,11 +10,11 @@ export class NewsApiServiceService {
 
   constructor(private _http: HttpClient) { }
 
-  NewsApiUrl = "https://newsapi.org/v2/top-headlines?country=in&category=technology&apiKey=5cc0dece04c446ffb01528372f6cbf5e";
+  dummyUrl: string = "https://newsapi.org/v2/top-headlines?country=in&category=technology&apiKey=5cc0dece04c446ffb01528372f6cbf5e&q=";
 
-  SearchUrl = "https://newsapi.org/v2/top-headlines?country=in&category=technology&apiKey=5cc0dece04c446ffb01528372f6cbf5e&q="+this.searchquery;
+  NewsApiUrl: string= "https://newsapi.org/v2/top-headlines?country=in&category=technology&apiKey=5cc0dece04c446ffb01528372f6cbf5e&q=";
 
   topHeading(): Observable<any> {
-    return this._http.get(this.SearchUrl);
+    return this._http.get(this.NewsApiUrl);
   }
 }
