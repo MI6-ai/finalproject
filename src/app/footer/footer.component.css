@@ -2,11 +2,11 @@
     background: #3B5998;  
     color: white;  
 }
-div{
+.div{
   background-color: #045de9;
   align-items: center;
 }
-h2{
+.h2{
   text-align: center;
   color: white;
   padding-top: 20px;
@@ -15,15 +15,15 @@ a {
   color: white;
   
 }
-a:hover{
+a:hover {
   color: black;
 }
-p{
+.p {
   text-align: center;
   font-size: x-large;
   padding-bottom: 20px;
 }
-li{
+.links {
   display: inline-flex;
   padding-right: 10px;
   margin: 0 10px;
