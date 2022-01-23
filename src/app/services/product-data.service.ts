@@ -1,6 +1,6 @@
 export class ProductDataService {
     product : string ='';
-    
+    products =['laptops','mobiles','headphones'];
     laptops = [
         {
             name: 'Macbook Air',
@@ -27,12 +27,33 @@ export class ProductDataService {
         }
     ];
 
+    headphones = [
+        {
+            name: 'Skullcandy hesh evo',
+            rating: 8,
+            price: 99
+        },
+        {
+             name: 'Razer Blackshark',
+             rating: 9,
+             price: 109
+        }
+    ];
+
+    // gaming = [
+    //     {
+    //         name: ''
+    //     }
+    // ]
+
     getProducts()
     {
         switch(this.product) {
             case 'laptops': return this.laptops.slice();
             break;
             case 'mobiles': return this.mobiles.slice();
+            break;
+            case 'headphones': return this.headphones.slice();
             break;
         }
         return this.laptops.slice();
@@ -45,7 +66,9 @@ export class ProductDataService {
             break;
             case 'mobiles': return this.mobiles[index-1];
             break;
+            case 'headphones': return this.headphones[index-1];
+            break;
         }
-        return this.laptops[index];
+        return this.laptops[index-1];
     }
 }

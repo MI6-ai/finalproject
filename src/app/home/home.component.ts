@@ -14,7 +14,6 @@ export class HomeComponent implements OnInit{
   topHeadingDisplay: any = [];
 
   ngOnInit(): void {
-
     this.route.queryParams
     .subscribe(
       (result) => {
@@ -34,10 +33,5 @@ export class HomeComponent implements OnInit{
       }
     );
     
-    
   }
-
-  
-
-
 }

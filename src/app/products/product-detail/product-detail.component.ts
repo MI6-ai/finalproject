@@ -15,6 +15,7 @@ export class ProductDetailComponent implements OnInit {
     price: 0
   };
   index: number = 0;
+  productString: string ='';
 
   constructor(private productService: ProductDataService,
     private route: ActivatedRoute,
@@ -25,8 +26,11 @@ export class ProductDetailComponent implements OnInit {
     this.route.params
       .subscribe(
         (params: Params) => {
-          this.index = +params['id'];
+          this.productString = params['product'];
+          if(this.productService.products.includes(this.productString)){
+            this.index = +params['id'];
           this.product = this.productService.getProduct(this.index);
+          }    
         }
       );
 

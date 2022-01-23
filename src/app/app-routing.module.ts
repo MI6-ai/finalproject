@@ -15,8 +15,8 @@ const appRoutes : Routes = [
   { path: 'products', component: ProductsComponent, children: [
     { path: ':product', component: ProductListComponent, children: [
       { path: '', component: AboutComponent},
-      { path: ':id', component: ProductDetailComponent }
-    ]}
+    ]},
+    { path: ':product/:id', component: ProductDetailComponent }
   ]},
   { path: 'guide', component: GuideComponent},
   { path: 'publish', component: PublishComponent},
