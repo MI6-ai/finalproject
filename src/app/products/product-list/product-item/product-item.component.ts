@@ -10,7 +10,12 @@ export class ProductItemComponent implements OnInit {
   @Input() product: Product = {
     name: '',
     rating: 0,
-    price: 0
+    price: 0,
+    description:'',
+    review: '',
+    dateOfPublish: new Date(),
+    image: '',
+    publisher: ''
   };
   @Input() index: number = 0;
 

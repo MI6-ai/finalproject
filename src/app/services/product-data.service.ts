@@ -3,40 +3,65 @@ export class ProductDataService {
     products =['laptops','mobiles','headphones'];
     laptops = [
         {
-            name: 'Macbook Air',
+            name: 'Macbook Air, laptop',
             rating: 9,
-            price: 999
-        },
-        {
-            name: 'DELL XPS 17',
-            rating: 9,
-            price: 1999
+            price: 999,
+            description: 'Definitely the best one',
+            review: 'best',
+            publisher: 'Abhishek Rathore',
+            dateOfPublish: new Date('2022-01-27'),
+            image: 'https://i.gadgets360cdn.com/large/apple_macbook_air_M1_2020review_cover_1607598067132.jpg?downsize=950:*'
         }
+        // {
+        //     name: 'DELL XPS 17',
+        //     rating: 9,
+        //     price: 1999
+        // }
     ];
 
     mobiles = [
+        // {
+        //     name: 'Iphone 13',
+        //     rating: 9,
+        //     price: 799
+        // },
+        // {
+        //     name: 'Iphone 13 pro',
+        //     rating: 9.5,
+        //     price: 999
+        // }
         {
-            name: 'Iphone 13',
+            name: 'Macbook Air, mobiles',
             rating: 9,
-            price: 799
-        },
-        {
-            name: 'Iphone 13 pro',
-            rating: 9.5,
-            price: 999
+            price: 999,
+            description: 'Definitely the best one',
+            review: 'best',
+            publisher: 'Abhishek Rathore',
+            dateOfPublish: new Date('2022-01-27'),
+            image: 'https://i.gadgets360cdn.com/large/apple_macbook_air_M1_2020review_cover_1607598067132.jpg?downsize=950:*'
         }
     ];
 
     headphones = [
+        // {
+        //     name: 'Skullcandy hesh evo',
+        //     rating: 8,
+        //     price: 99
+        // },
+        // {
+        //      name: 'Razer Blackshark',
+        //      rating: 9,
+        //      price: 109
+        // }
         {
-            name: 'Skullcandy hesh evo',
-            rating: 8,
-            price: 99
-        },
-        {
-             name: 'Razer Blackshark',
-             rating: 9,
-             price: 109
+            name: 'Macbook Air, headphones',
+            rating: 9,
+            price: 999,
+            description: 'Definitely the best one',
+            review: 'best',
+            publisher: 'Abhishek Rathore',
+            dateOfPublish: new Date('2022-01-27'),
+            image: 'https://i.gadgets360cdn.com/large/apple_macbook_air_M1_2020review_cover_1607598067132.jpg?downsize=950:*'
         }
     ];
 

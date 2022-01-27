@@ -12,7 +12,12 @@ export class ProductDetailComponent implements OnInit {
   product: Product = {
     name: '',
     rating: 0,
-    price: 0
+    price: 0,
+    description:'',
+    review: '',
+    dateOfPublish: new Date(),
+    image: '',
+    publisher: ''
   };
   index: number = 0;
   productString: string ='';

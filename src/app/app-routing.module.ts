@@ -8,7 +8,6 @@ import { HomeComponent } from './home/home.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { ProductsComponent } from './products/products.component';
-import { PublishComponent } from './publish/publish.component';
 
 const appRoutes : Routes = [
   { path: '', component: HomeComponent },
@@ -19,7 +18,6 @@ const appRoutes : Routes = [
     { path: ':product/:id', component: ProductDetailComponent }
   ]},
   { path: 'guide', component: GuideComponent},
-  { path: 'publish', component: PublishComponent},
   { path: 'about', component: AboutComponent},
   { path: 'contact', component: ContactComponent},
 ];

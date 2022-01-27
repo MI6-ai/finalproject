@@ -10,7 +10,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
 import { GuideComponent } from './guide/guide.component';
-import { PublishComponent } from './publish/publish.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 
@@ -28,7 +27,6 @@ import { FooterComponent } from './footer/footer.component';
     HomeComponent,
     ProductsComponent,
     GuideComponent,
-    PublishComponent,
     AboutComponent,
     ContactComponent,
     ProductListComponent,

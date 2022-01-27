@@ -1,2 +1,9 @@
-<p>product-detail works!</p>
-<h1>{{ product.name }}</h1>
+<div class="container">
+    <h4 class="list-group-item-heading">{{ product.name }}</h4>
+    <p class="list-group-item-text">{{ product.rating }}/10</p>
+    <p class="list-group-item-text">{{ product.description }}</p>
+    <p class="list-group-item-text help-text">{{ product.publisher }}, published on {{ product.dateOfPublish }}</p>
+    <p class="list-group-item-text">{{ product.price }}</p>
+    <div> <img src="{{ product.image }}" alt="ok"></div>
+    <p class="list-group-item-text">{{ product.review }}</p>
+  </div>
