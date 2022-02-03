@@ -6,7 +6,7 @@ export class Product {
     public publisher: string;
     public dateOfPublish: Date;
     public image: string;
-    public price: number
+    public price: number;
 
     constructor(name: string,
           rating: number,
