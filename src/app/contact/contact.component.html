@@ -12,10 +12,18 @@
         <input required ngModel name="lastName" id="lastName" type="text" class="form-control">
 
         <label for="emailId">Email</label>
-        <input required ngModel name=emailId id="emailId" type="email" class="form-control">
-        <!-- <div class="alert alert-danger" *ngIf="emailId.touched && !emailId.valid">
-            Email Id is not valid
-        </div> -->
+        <input
+         required
+         ngModel
+         name=emailId 
+         id="emailId" 
+         type="email" 
+         #emailId="ngModel"
+         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+         class="form-control">
+        <div *ngIf="emailId.touched && !emailId.valid">
+           <p class="alert alert-danger">Email Id is not valid</p>
+        </div>
         <label for="comment">Comment</label>
         <textarea name="comment" required ngModel id="comment" cols="30" rows="10" class="form-control"></textarea>
         <button class="btn btn-primary" type="submit">Submit</button> 
