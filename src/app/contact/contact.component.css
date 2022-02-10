@@ -1,0 +1,42 @@
+input{
+    width: 200px;
+}
+
+textarea{
+    width: 300px;
+}
+
+.btn.btn-primary{
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+.form-control.ng-touched.ng-invalid{
+    border: 2px solid red;
+    
+}
+
+.form-group{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    padding-top: 10px;
+}
+
+.title-bar{
+    background-color: #045de9;
+    background-image: linear-gradient(315deg, #045de9 0%, #09c6f9 74%);
+    text-align: center;
+    color: white;
+    display: block;
+    margin-right: 0px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  
+  .btn.btn-primary{
+      padding: 10px;
+  }
+  
+
+ 
