@@ -3,21 +3,21 @@
 <div class="container-fluid title-bar">
     <h1>Contact Us</h1>
 </div>
-<form>
+<form (ngSubmit)="onAddComment(commentForm)" #commentForm="ngForm">
     <div class="form-group">
         <label for="firstName">First Name</label>
-        <input required ngModel name="firstName" #firstName="ngModel" id="firstName" type="text" class="form-control">
+        <input required ngModel name="firstName" id="firstName" type="text" class="form-control">
 
         <label for="lastName">Last Name</label>
-        <input required ngModel name="lastName" #lastName="ngModel" id="lastName" type="text" class="form-control">
+        <input required ngModel name="lastName" id="lastName" type="text" class="form-control">
 
         <label for="emailId">Email</label>
-        <input required ngModel name=emailId #emailId="ngModel" id="emailId" type="email" class="form-control">
-        <div class="alert alert-danger" *ngIf="emailId.touched && !emailId.valid">
+        <input required ngModel name=emailId id="emailId" type="email" class="form-control">
+        <!-- <div class="alert alert-danger" *ngIf="emailId.touched && !emailId.valid">
             Email Id is not valid
-        </div>
+        </div> -->
         <label for="comment">Comment</label>
-        <textarea name="" id="comment" cols="30" rows="10" class="form-control"></textarea>
-        <button class="btn btn-primary">Submit</button> 
+        <textarea name="comment" required ngModel id="comment" cols="30" rows="10" class="form-control"></textarea>
+        <button class="btn btn-primary" type="submit">Submit</button> 
     </div> 
 </form>
