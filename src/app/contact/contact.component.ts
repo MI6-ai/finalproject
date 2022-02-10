@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
@@ -8,14 +9,21 @@ import { NgForm } from '@angular/forms';
 })
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
   
   ngOnInit(): void {
   }
 
   onAddComment(form: NgForm) {
     const value = form.value;
-    console.log(value)
+    // console.log(value)
+
+    this.http.post('https://techlead-e4ee9-default-rtdb.firebaseio.com/comments.json',
+     value
+    ).subscribe(response => {
+      console.log(response);
+      form.reset();
+    })
 
   }
 
