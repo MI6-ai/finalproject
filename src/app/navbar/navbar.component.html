@@ -26,7 +26,12 @@
             <ul class="navbar-nav ml-auto">
               <li class="nav-item"><a class="nav-link" routerLink="/shop">Shop</a></li>
               <li class="nav-item"><a class="nav-link">Subscribe</a></li>
-              <li class="nav-item"><a class="nav-link">Profile</a></li>
+              <li class="nav-item">
+                <a class="nav-link" 
+                   onclick="document.getElementById('id01').style.display='block'"
+                   style="cursor: pointer;"
+                   >Login</a>
+              </li>
             </ul>
           </div>
         </nav>
@@ -53,5 +58,40 @@
         </div>
       </nav>
     </div>
+
+    <!-- <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button> -->
+  
+    <div id="id01" class="modal">
+  
+        <form class="modal-content animate" (ngSubmit)="onLogin(loginForm)" #loginForm="ngForm">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
+            </div>
+  
+            <div class="container">
+                <label><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" ngModel class="loginput form-control" name="uname" required>
+  
+                <label><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" ngModel class="loginput form-control" name="psw" required>
+  
+                <button class="submitbtn" type="submit">Login</button>
+            </div>
+  
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="submitbtn cancelbtn">Cancel</button>
+                <span class="psw"><a href="#">Forgot password?</a></span>
+            </div>
+        </form>
+    </div>
     
     </div>
+
+    <script>
+      var modal = document.getElementById('id01');
+      window.onclick = function(event) {
+          if (event.target == modal) {
+              modal.style.display = "none";
+          }
+      }
+  </script>

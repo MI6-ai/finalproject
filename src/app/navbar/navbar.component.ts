@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Form, NgForm } from '@angular/forms';
 import { ActivatedRoute, Event, Router } from '@angular/router';
 import { NewsApiServiceService } from '../services/news-api-service.service';
 
@@ -25,7 +25,12 @@ export class NavbarComponent implements OnInit {
     this.searchQuery = form.searchBar;
     this.NewsApiService.searchquery = this.searchQuery;
   }
+
   updateHome(){
     this.router.navigate(['/'], {relativeTo: this.route});
+  }
+
+  onLogin(loginform: NgForm) {
+    console.log(loginform.value)
   }
 }
