@@ -1,31 +1,53 @@
 
 
-<div class="container-fluid title-bar">
-    <h1>Contact Us</h1>
-</div>
-<form (ngSubmit)="onAddComment(commentForm)" #commentForm="ngForm">
-    <div class="form-group">
-        <label for="firstName">First Name</label>
-        <input required ngModel name="firstName" id="firstName" type="text" class="form-control">
-
-        <label for="lastName">Last Name</label>
-        <input required ngModel name="lastName" id="lastName" type="text" class="form-control">
-
-        <label for="emailId">Email</label>
-        <input
-         required
-         ngModel
-         name=emailId 
-         id="emailId" 
-         type="email" 
-         #emailId="ngModel"
-         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-         class="form-control">
-        <div *ngIf="emailId.touched && !emailId.valid">
-           <p class="alert alert-danger">Email Id is not valid</p>
-        </div>
-        <label for="comment">Comment</label>
-        <textarea name="comment" required ngModel id="comment" cols="30" rows="10" class="form-control"></textarea>
-        <button class="btn btn-primary" type="submit">Submit</button> 
-    </div> 
-</form>
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <div class="container-fluid title-bar">
+        <h1>About Us</h1>
+        <h4>Want to know more about us?</h4>
+    </div>
+   
+   <body>
+    <div class="container">
+        <form action="#">
+           <div class="form-row">
+              <div class="input-data">
+                 <input type="text" required>
+                 <div class="underline"></div>
+                 <label for="">First Name</label>
+              </div>
+              <div class="input-data">
+                 <input type="text" required>
+                 <div class="underline"></div>
+                 <label for="">Last Name</label>
+              </div>
+           </div>
+           <div class="form-row">
+              <div class="input-data">
+                 <input type="text" required>
+                 <div class="underline"></div>
+                 <label for="">Email Address</label>
+              </div>
+           </div>
+           <div class="form-row">
+              <div class="input-data textarea">
+                 <textarea rows="8" cols="80" required></textarea>
+                 <br />
+                 <div class="underline"></div>
+                 <label for="">Write your message</label>
+                 <br />
+                 <div class="form-row submit-btn">
+                    <div class="input-data">
+                       <div class="inner"></div>
+                       <input type="submit" value="submit">
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </form>
+     </div>
+   </body>
+</html>
