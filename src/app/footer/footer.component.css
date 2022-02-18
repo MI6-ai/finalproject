@@ -1,36 +1,41 @@
 .fa-facebook {  
-    background: #3B5998;  
-    color: white;  
+  background: #3B5998;  
+  color: white;  
 }
 
 .div{
-  background-color: #045de9;
-  align-items: center;
+background-color: #045de9;
+align-items: center;
 }
 .h2{
-  text-align: center;
-  color: white;
-  padding-top: 20px;
+text-align: center;
+color: white;
+padding-top: 20px;
 }
 
 a {
-  color: white;
-  
+color: white;
+
 }
 a:hover {
-  color: black;
+color: black;
 }
 .p {
-  text-align: center;
-  font-size: x-large;
-  padding-bottom: 20pxwwwwwwwwwwwww;
+text-align: center;
+font-size: x-large;
+padding-bottom: 20pxwwwwwwwwwwwww;
 }
 .links {
-  display: inline-flex;
-  padding-right: 10px;
-  margin: 0 10px;
+display: inline-flex;
+padding-right: 10px;
+margin: 0 10px;
 }
 
 .list{
-  text-align: center;
+text-align: center;
+}
+
+.py-4{
+background-color: #537895;
+background-image: linear-gradient(315deg, #537895 0%, #09203f 74%);
 }

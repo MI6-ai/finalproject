@@ -1,9 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
-@font-face {
-    font-family: lato;
-    src: url(assets/Lato-Regular.ttf) format("opentype");
-  }
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
   body {
       font-family: 'Lato-Regular';
+      background-color: #5ca0f2;
+      background-image: linear-gradient(315deg, #5ca0f2 0%, #f5f7f6 74%);
+  }
+  *{
+    font-family: 'Poppins', sans-serif;
   }
