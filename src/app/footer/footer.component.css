@@ -36,6 +36,6 @@ text-align: center;
 }
 
 .py-4{
-background-color: #537895;
-background-image: linear-gradient(315deg, #537895 0%, #09203f 74%);
+  background-color: #045de9;
+  background-image: linear-gradient(315deg, #045de9 0%, #09c6f9 74%);
 }
