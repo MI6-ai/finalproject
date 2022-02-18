@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { ShopDataService } from '../services/shop-data.service';
 
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
-  styleUrls: ['./shop.component.css']
+  styleUrls: ['./shop.component.scss']
 })
 export class ShopComponent implements OnInit {
 
-  constructor() { }
+  constructor(private shop: ShopDataService) { }
+
+  products =this.shop.getProducts();
 
   ngOnInit(): void {
   }
