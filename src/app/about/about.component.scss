@@ -27,8 +27,6 @@
 }
 
 
-
-
 @import url("https://fonts.googleapis.com/css?family=DM+Sans:400,500|Jost:400,500,600&display=swap");
 
 * {
@@ -64,22 +62,22 @@ body {
   box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.2);
 }
 
-.card1[data-state="#about"], .card2[data-state="#about"]{
+.card1[data-state="#about1"], .card2[data-state="#about2"]{
   height: 450px;
   .card-main {
     padding-top: 0;
   }
 }
 
-.card1[data-state="#contact"], .card2[data-state="#contact"]  {
-  height: 430px;
+.card1[data-state="#contact1"], .card2[data-state="#contact2"]  {
+  height: 450px;
 }
 
-.card1[data-state="#experience"], .card2[data-state="#experience"] {
-  height: 550px;
+.card1[data-state="#experience1"], .card2[data-state="#experience2"] {
+  height: 450px;
 }
 
-.card.is-active {
+.card1.is-active , .card2.is-active{
   .card-header {
     height: 80px;
   }
