@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { GuideComponent } from './guide/guide.component';
-
+import { ArticlesComponent } from './articles/articles.component'
 import { HomeComponent } from './home/home.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
@@ -21,7 +21,8 @@ const appRoutes : Routes = [
   { path: 'guide', component: GuideComponent},
   { path: 'about', component: AboutComponent},
   { path: 'contact', component: ContactComponent},
-  { path: 'shop', component: ShopComponent }
+  { path: 'shop', component: ShopComponent },
+  { path: 'articles', component: ArticlesComponent }
 ];
 
 @NgModule({
