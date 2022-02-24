@@ -21,6 +21,7 @@ import { ProductItemComponent } from './products/product-list/product-item/produ
 import { FooterComponent } from './footer/footer.component';
 import { ShopComponent } from './shop/shop.component';
 import { ArticlesComponent } from './articles/articles.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ArticlesComponent } from './articles/articles.component';
     FooterComponent,
     ShopComponent,
     ArticlesComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,

@@ -15,6 +15,7 @@ export class NavbarComponent implements OnInit {
 
   isLoginMode = true;
   error:string = "";
+  isLoading = false;
 
   onSwitch() {
     this.isLoginMode = !this.isLoginMode;
@@ -40,6 +41,7 @@ export class NavbarComponent implements OnInit {
   }
 
   onLogin(loginform: NgForm) {
+    this.isLoading = true;
     const email = loginform.value.uname;
     const password = loginform.value.psw;
     let confirmPassword = null;
@@ -65,7 +67,8 @@ export class NavbarComponent implements OnInit {
     console.log("hi");
     AuthObs.subscribe({
       next: (resData) => {
-        console.log(resData)
+        console.log(resData);
+        this.isLoading = false;
       },
       error: (e) => {
         console.log(e)

@@ -95,7 +95,10 @@
                   <p class="alert alert-danger">{{error}}</p>
                 </div>
                 
-                <button class="submitbtn" type="submit">{{ isLoginMode ? 'Login' : 'Sign Up' }}</button>
+                <button class="submitbtn" type="submit">
+                  <span *ngIf="!isLoading">{{ isLoginMode ? 'Login' : 'Sign Up' }}</span>
+                  <span *ngIf="isLoading"><app-loading-spinner></app-loading-spinner></span>
+                </button>
             </div>
   
             <div class="container" style="background-color:#f1f1f1">
