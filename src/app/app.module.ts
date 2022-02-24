@@ -20,6 +20,7 @@ import { ProductDetailComponent } from './products/product-detail/product-detail
 import { ProductItemComponent } from './products/product-list/product-item/product-item.component';
 import { FooterComponent } from './footer/footer.component';
 import { ShopComponent } from './shop/shop.component';
+import { ArticlesComponent } from './articles/articles.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ShopComponent } from './shop/shop.component';
     ProductItemComponent,
     FooterComponent,
     ShopComponent,
+    ArticlesComponent,
   ],
   imports: [
     BrowserModule,
