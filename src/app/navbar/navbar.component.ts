@@ -1,6 +1,9 @@
+import { ConstantPool } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Form, NgForm } from '@angular/forms';
 import { ActivatedRoute, Event, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { AuthResponseData, AuthService } from '../services/auth.service';
 import { NewsApiServiceService } from '../services/news-api-service.service';
 
 @Component({
@@ -10,13 +13,19 @@ import { NewsApiServiceService } from '../services/news-api-service.service';
 })
 export class NavbarComponent implements OnInit {
 
-  // rightmenu = ['Shop', 'Subscribe', 'Profile'];
-  // leftmenu = ['Home','Products','Guide','Publish','About','Contact']
+  isLoginMode = true;
+  error:string = "";
+
+  onSwitch() {
+    this.isLoginMode = !this.isLoginMode;
+  }
+  
   searchQuery: string ='';
 
   constructor(private NewsApiService : NewsApiServiceService,
     private router : Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
     
@@ -31,6 +40,40 @@ export class NavbarComponent implements OnInit {
   }
 
   onLogin(loginform: NgForm) {
-    console.log(loginform.value)
+    const email = loginform.value.uname;
+    const password = loginform.value.psw;
+    let confirmPassword = null;
+    if(loginform.value.confpsw)
+    {
+     confirmPassword = loginform.value.confpsw;
+     if(password!=confirmPassword)
+     {
+       this.error = "Please enter correct details";
+     }
+    }
+
+    let AuthObs: Observable<AuthResponseData>
+
+    if(this.isLoginMode)
+    {
+      AuthObs = this.authService.login(email,password);
+    }
+    else
+    {
+      AuthObs = this.authService.signup(email,password);
+    }
+    console.log("hi");
+    AuthObs.subscribe({
+      next: (resData) => {
+        console.log(resData)
+      },
+      error: (e) => {
+        console.log(e)
+      }
+    })
+
+    loginform.reset();
+    setTimeout(() => this.error="",5000)
+
   }
 }

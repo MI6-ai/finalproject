@@ -59,8 +59,7 @@
       </nav>
     </div>
 
-    <!-- <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button> -->
-  
+    <!-- Login Modal  -->
     <div id="id01" class="modal">
   
         <form class="modal-content animate" (ngSubmit)="onLogin(loginForm)" #loginForm="ngForm">
@@ -70,17 +69,38 @@
   
             <div class="container">
                 <label><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" ngModel class="loginput form-control" name="uname" required>
+                <input 
+                type="text" 
+                placeholder="Enter Username" 
+                ngModel 
+                class="loginput form-control" 
+                name="uname" 
+                required>
   
                 <label><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" ngModel class="loginput form-control" name="psw" required>
-  
-                <button class="submitbtn" type="submit">Login</button>
+                <input 
+                type="password" 
+                placeholder="Enter Password" 
+                ngModel 
+                class="loginput form-control" 
+                name="psw" 
+                required
+                minlength="8">
+                
+                <span *ngIf="!isLoginMode">
+                  <label><b>Confirm Password</b></label>
+                  <input type="password" placeholder="Confirm Password" ngModel class="loginput form-control" name="confpsw" required>
+                </span>
+                <div *ngIf="error">
+                  <p class="alert alert-danger">{{error}}</p>
+                </div>
+                
+                <button class="submitbtn" type="submit">{{ isLoginMode ? 'Login' : 'Sign Up' }}</button>
             </div>
   
             <div class="container" style="background-color:#f1f1f1">
                 <button type="button" onclick="document.getElementById('id01').style.display='none'" class="submitbtn cancelbtn">Cancel</button>
-                <span class="psw"><a href="#">Forgot password?</a></span>
+                <span style="cursor: pointer;" class="psw"><a (click)="onSwitch()">{{isLoginMode ? 'New User? Sign Up Now!' : 'Already a User? Log In Now!'}}</a></span>
             </div>
         </form>
     </div>
