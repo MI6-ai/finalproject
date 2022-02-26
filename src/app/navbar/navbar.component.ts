@@ -1,8 +1,8 @@
 import { ConstantPool } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Form, NgForm } from '@angular/forms';
 import { ActivatedRoute, Event, Router } from '@angular/router';
-import { Observable, throwError } from 'rxjs';
+import { Observable, Subscription, throwError } from 'rxjs';
 import { AuthResponseData, AuthService } from '../services/auth.service';
 import { NewsApiServiceService } from '../services/news-api-service.service';
 
@@ -11,11 +11,14 @@ import { NewsApiServiceService } from '../services/news-api-service.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
 
   isLoginMode = true;
   error:string = "";
   isLoading = false;
+
+  private userSub: Subscription | undefined;
+  isAuthenticated = false;
 
   onSwitch() {
     this.isLoginMode = !this.isLoginMode;
@@ -26,44 +29,59 @@ export class NavbarComponent implements OnInit {
   constructor(private NewsApiService : NewsApiServiceService,
     private router : Router,
     private route: ActivatedRoute,
-    private authService: AuthService) { }
+    private authService: AuthService) 
+  { }
+
+    
 
   ngOnInit(): void {
 
     const body: any = document.querySelector("body");
-const modal: any = document.querySelector(".modal");
-const modalButton: any = document.querySelector(".modal-button");
-const closeButton: any = document.querySelector(".close-button");
-const scrollDown: any = document.querySelector(".scroll-down");
-let isOpened = false;
+    const modal: any = document.querySelector(".modal");
+    const modalButton: any = document.querySelector(".modal-button");
+    const closeButton: any = document.querySelector(".close-button");
+    const scrollDown: any = document.querySelector(".scroll-down");
+    let isOpened = false;
 
-const openModal = () => {
-  modal.classList.add("is-open");
-  body.style.overflow = "hidden";
-};
+    const openModal = () => {
+     modal.classList.add("is-open");
+     body.style.overflow = "hidden";
+    };
 
-const closeModal = () => {
-  modal.classList.remove("is-open");
-  body.style.overflow = "initial";
-};
+    const closeModal = () => {
+     modal.classList.remove("is-open");
+     body.style.overflow = "initial";
+    };
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > window.innerHeight / 3 && !isOpened) {
-    isOpened = true;
-    scrollDown.style.display = "none";
-    openModal();
-  }
-});
+    window.addEventListener("scroll", () => {
+     if (window.scrollY > window.innerHeight / 3 && !isOpened) {
+       isOpened = true;
+       scrollDown.style.display = "none";
+       openModal();
+      }
+    });
 
-modalButton.addEventListener("click", openModal);
-closeButton.addEventListener("click", closeModal);
+    modalButton.addEventListener("click", openModal);
+    closeButton.addEventListener("click", closeModal);
 
-document.onkeydown = evt => {
-  evt = evt || window.event;
-  evt.keyCode === 27 ? closeModal() : false;
-};
+    
+
+    document.onkeydown = evt => {
+     evt = evt || window.event;
+     evt.keyCode === 27 ? closeModal() : false;
+    };
+    
+
+    this.userSub = this.authService.user.subscribe(user => {
+      this.isAuthenticated = !!user;
+      if(this.isAuthenticated)
+      {
+        modalButton.removeEventListener("click",openModal);
+      }
+    })
     
   }
+
   SearchF(form: any) {
     this.searchQuery = form.searchBar;
     this.NewsApiService.searchquery = this.searchQuery;
@@ -75,15 +93,20 @@ document.onkeydown = evt => {
 
   onLogin(loginform: NgForm) {
     this.isLoading = true;
-    const email = loginform.value.uname;
-    const password = loginform.value.psw;
+
+    const email = loginform.value.email;
+    const password = loginform.value.password;
     let confirmPassword = null;
-    if(loginform.value.confpsw)
+    if(loginform.value.confpassword)
     {
-     confirmPassword = loginform.value.confpsw;
+     confirmPassword = loginform.value.confpassword;
      if(password!=confirmPassword)
      {
-       this.error = "Please enter correct details";      
+       this.error = "Please enter correct details"; 
+       this.isLoading = false;
+       loginform.reset();
+       setTimeout(() => this.error="",3000)
+       return;
      }
     }
 
@@ -102,6 +125,13 @@ document.onkeydown = evt => {
       next: (resData) => {
         console.log(resData);
         this.isLoading = false;
+        
+        const body: any = document.querySelector("body");
+        const modal: any = document.querySelector(".modal");
+        modal.classList.remove("is-open");
+        body.style.overflow = "initial";
+
+        this.router.navigate(['/'])
       },
       error: (eMsg) => {
         console.log(eMsg);
@@ -113,5 +143,11 @@ document.onkeydown = evt => {
     loginform.reset();
     setTimeout(() => this.error="",5000)
 
+  }
+
+  ngOnDestroy(): void {
+    if(this.userSub){
+      this.userSub.unsubscribe();
+    }
   }
 }
