@@ -14,9 +14,9 @@ export class ContactComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onAddComment(form: NgForm) {
+  onSubmit(form: NgForm) {
     const value = form.value;
-    // console.log(value)
+    console.log(value)
 
     this.http.post('https://techlead-e4ee9-default-rtdb.firebaseio.com/comments.json',
      value

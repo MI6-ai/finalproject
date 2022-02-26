@@ -5,24 +5,24 @@
    </div>
    <div class="new-body">
       <div class="container">
-         <form action="#">
+         <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
             <div class="form-row">
                <div class="input-data">
-                  <input type="text" required>
+                  <input ngModel name="Name" type="text" required>
                   <div class="underline"></div>
                   <label for="">Name</label>
                </div>
             </div>
             <div class="form-row">
                <div class="input-data">
-                  <input type="text" required>
+                  <input ngModel name="emailaddress" type="text" required>
                   <div class="underline"></div>
                   <label for="">Email Address</label>
                </div>
             </div>
             <div class="form-row">
                <div class="input-data textarea">
-                  <textarea rows="8" cols="80" required></textarea>
+                  <textarea ngModel name="msg" rows="8" cols="80" required></textarea>
                   <br />
                   <div class="underline"></div>
                   <label for="">Write your message</label>

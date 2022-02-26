@@ -2,7 +2,7 @@ import { ConstantPool } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Form, NgForm } from '@angular/forms';
 import { ActivatedRoute, Event, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { AuthResponseData, AuthService } from '../services/auth.service';
 import { NewsApiServiceService } from '../services/news-api-service.service';
 
@@ -50,7 +50,7 @@ export class NavbarComponent implements OnInit {
      confirmPassword = loginform.value.confpsw;
      if(password!=confirmPassword)
      {
-       this.error = "Please enter correct details";
+       this.error = "Please enter correct details";      
      }
     }
 
