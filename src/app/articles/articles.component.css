@@ -9,4 +9,19 @@
     padding-bottom: 50px;
   }
 
-  
+  .image-banner {
+    height: 200px;
+    display: block;
+    margin-top: 70px;
+    margin-bottom: 100px;
+}
+
+.shopheading {
+    text-align: center;
+}
+
+.my-container{
+    width: 1250px;
+    margin-left: auto;
+    margin-right: auto;
+}
