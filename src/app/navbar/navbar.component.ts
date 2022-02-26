@@ -70,8 +70,10 @@ export class NavbarComponent implements OnInit {
         console.log(resData);
         this.isLoading = false;
       },
-      error: (e) => {
-        console.log(e)
+      error: (eMsg) => {
+        console.log(eMsg);
+        this.error = eMsg;
+        this.isLoading= false;
       }
     })
 
