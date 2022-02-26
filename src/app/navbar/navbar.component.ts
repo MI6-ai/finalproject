@@ -9,7 +9,7 @@ import { NewsApiServiceService } from '../services/news-api-service.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
 
@@ -29,6 +29,39 @@ export class NavbarComponent implements OnInit {
     private authService: AuthService) { }
 
   ngOnInit(): void {
+
+    const body: any = document.querySelector("body");
+const modal: any = document.querySelector(".modal");
+const modalButton: any = document.querySelector(".modal-button");
+const closeButton: any = document.querySelector(".close-button");
+const scrollDown: any = document.querySelector(".scroll-down");
+let isOpened = false;
+
+const openModal = () => {
+  modal.classList.add("is-open");
+  body.style.overflow = "hidden";
+};
+
+const closeModal = () => {
+  modal.classList.remove("is-open");
+  body.style.overflow = "initial";
+};
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > window.innerHeight / 3 && !isOpened) {
+    isOpened = true;
+    scrollDown.style.display = "none";
+    openModal();
+  }
+});
+
+modalButton.addEventListener("click", openModal);
+closeButton.addEventListener("click", closeModal);
+
+document.onkeydown = evt => {
+  evt = evt || window.event;
+  evt.keyCode === 27 ? closeModal() : false;
+};
     
   }
   SearchF(form: any) {
