@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -22,6 +22,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ShopComponent } from './shop/shop.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { AuthInterceptorService } from './shared/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinne
     FormsModule,
     HttpClientModule
   ],
-  providers: [NewsApiServiceService, ProductDataService],
+  providers: [NewsApiServiceService, ProductDataService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

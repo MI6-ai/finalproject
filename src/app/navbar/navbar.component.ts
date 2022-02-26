@@ -32,25 +32,27 @@ export class NavbarComponent implements OnInit, OnDestroy {
     private authService: AuthService) 
   { }
 
-    
+  modalButton: any = null;
+  body: any = null;
+  modal: any = null;
 
   ngOnInit(): void {
 
-    const body: any = document.querySelector("body");
-    const modal: any = document.querySelector(".modal");
-    const modalButton: any = document.querySelector(".modal-button");
+    this.body = document.querySelector("body");
+    this.modal = document.querySelector(".modal");
+    this.modalButton = document.querySelector(".modal-button");
     const closeButton: any = document.querySelector(".close-button");
     const scrollDown: any = document.querySelector(".scroll-down");
     let isOpened = false;
 
     const openModal = () => {
-     modal.classList.add("is-open");
-     body.style.overflow = "hidden";
+     this.modal.classList.add("is-open");
+     this.body.style.overflow = "hidden";
     };
 
     const closeModal = () => {
-     modal.classList.remove("is-open");
-     body.style.overflow = "initial";
+     this.modal.classList.remove("is-open");
+     this.body.style.overflow = "initial";
     };
 
     window.addEventListener("scroll", () => {
@@ -61,7 +63,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       }
     });
 
-    modalButton.addEventListener("click", openModal);
+    this.modalButton.addEventListener("click", openModal);
     closeButton.addEventListener("click", closeModal);
 
     
@@ -76,7 +78,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.isAuthenticated = !!user;
       if(this.isAuthenticated)
       {
-        modalButton.removeEventListener("click",openModal);
+        this.modalButton.removeEventListener("click",openModal);
       }
     })
     
@@ -143,6 +145,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
     loginform.reset();
     setTimeout(() => this.error="",5000)
 
+  }
+
+  onLogout() {
+   
+    console.log("hi2");
+    this.modalButton.addEventListener("click", () => {
+      this.modal.classList.add("is-open");
+      this.body.style.overflow = "hidden";
+    });
+    this.authService.logout();
   }
 
   ngOnDestroy(): void {

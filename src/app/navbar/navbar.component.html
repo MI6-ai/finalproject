@@ -27,7 +27,7 @@
               <li class="nav-item"><a class="nav-link" routerLink="/shop">Shop</a></li>
               <li class="nav-item"><a class="nav-link">Subscribe</a></li>
               <li class="nav-item">
-                   <a class="nav-link modal-button" style="cursor: pointer;"> {{ isAuthenticated ? 'Log Out' : 'Login' }} </a>
+                   <a class="nav-link modal-button" (click)="isAuthenticated && onLogout()" style="cursor: pointer;"> {{ isAuthenticated ? 'Log Out' : 'Login' }} </a>
               </li>
               <!-- <li *ngIf="isAuthenticated" class="nav-item">
                 <a class="nav-link" style="cursor: pointer;">Log Out</a>
@@ -58,73 +58,8 @@
         </div>
       </nav>
     </div>
-<!-- 
-    <!-- Login Modal  
-    <div id="id01" class="modal">
-  
-        <form class="modal-content animate" (ngSubmit)="onLogin(loginForm)" #loginForm="ngForm">
-            <div class="imgcontainer">
-                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
-            </div>
-  
-            <div class="container">
-              <div *ngIf="error">
-                <p class="alert alert-danger">{{error}}</p>
-              </div>
-                <label><b>Username</b></label>
-                <input 
-                type="text" 
-                placeholder="Enter Username" 
-                ngModel 
-                class="loginput form-control" 
-                name="uname" 
-                required>
-  
-                <label><b>Password</b></label>
-                <input 
-                type="password" 
-                placeholder="Enter Password" 
-                ngModel 
-                class="loginput form-control" 
-                name="psw" 
-                required
-                minlength="8">
-                
-                <span *ngIf="!isLoginMode">
-                  <label><b>Confirm Password</b></label>
-                  <input type="password" placeholder="Confirm Password" ngModel class="loginput form-control" name="confpsw" required>
-                </span>
-                
-                <button class="submitbtn" type="submit">
-                  <span *ngIf="!isLoading">{{ isLoginMode ? 'Login' : 'Sign Up' }}</span>
-                  <span *ngIf="isLoading"><app-loading-spinner></app-loading-spinner></span>
-                </button>
-            </div>
-  
-            <div class="container" style="background-color:#f1f1f1">
-                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="submitbtn cancelbtn">Cancel</button>
-                <span style="cursor: pointer;" class="psw"><a (click)="onSwitch()">{{isLoginMode ? 'New User? Sign Up Now!' : 'Already a User? Log In Now!'}}</a></span>
-            </div>
-        </form>
-    </div>
-    
-    </div>
-
-    <script>
-      var modal = document.getElementById('id01');
-      window.onclick = function(event) {
-          if (event.target == modal) {
-              modal.style.display = "none";
-          }
-      }
-  </script> -->
 
 
-  <!-- <div class="scroll-down">SCROLL DOWN
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-    <path d="M16 3C8.832031 3 3 8.832031 3 16s5.832031 13 13 13 13-5.832031 13-13S23.167969 3 16 3zm0 2c6.085938 0 11 4.914063 11 11 0 6.085938-4.914062 11-11 11-6.085937 0-11-4.914062-11-11C5 9.914063 9.914063 5 16 5zm-1 4v10.28125l-4-4-1.40625 1.4375L16 23.125l6.40625-6.40625L21 15.28125l-4 4V9z"/> 
-  </svg></div>
-  <div class="container"></div> -->
   <div class="modal">
     <div class="modal-container">
       <div class="modal-left">
