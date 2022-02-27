@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +10,12 @@ import { ActivatedRoute } from '@angular/router';
 export class AppComponent implements OnInit {
   title = 'finalproject';
 
-  constructor( private Route: ActivatedRoute) {
-  }
-  activeUrl =""
+  constructor( private Route: ActivatedRoute, private authService: AuthService) {}
 
-  
+  activeUrl =""
+ 
   ngOnInit(): void {
+    this.authService.autoLogin();
   }
-  
-  
+   
 }

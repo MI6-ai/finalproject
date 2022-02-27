@@ -5,6 +5,7 @@ import { ActivatedRoute, Event, Router } from '@angular/router';
 import { Observable, Subscription, throwError } from 'rxjs';
 import { AuthResponseData, AuthService } from '../services/auth.service';
 import { NewsApiServiceService } from '../services/news-api-service.service';
+import { User } from '../shared/user.model';
 
 @Component({
   selector: 'app-navbar',
@@ -29,8 +30,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   constructor(private NewsApiService : NewsApiServiceService,
     private router : Router,
     private route: ActivatedRoute,
-    private authService: AuthService) 
-  { }
+    private authService: AuthService
+    )  { }
 
   modalButton: any = null;
   body: any = null;
@@ -122,7 +123,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     {
       AuthObs = this.authService.signup(email,password);
     }
-    console.log("hi");
+
     AuthObs.subscribe({
       next: (resData) => {
         console.log(resData);
@@ -148,14 +149,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   onLogout() {
-   
-    console.log("hi2");
     this.modalButton.addEventListener("click", () => {
       this.modal.classList.add("is-open");
       this.body.style.overflow = "hidden";
     });
     this.authService.logout();
   }
+
 
   ngOnDestroy(): void {
     if(this.userSub){
