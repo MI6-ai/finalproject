@@ -10,7 +10,22 @@
 }
 
 .my-container{
-    width: 1250px;
+    width: 1000px;
     margin-left: auto;
     margin-right: auto;
+    color: #3d4246;
+}
+
+.product{
+    background-color: transparent;
+    border: none;
+}
+
+.product:hover {
+    opacity: 0.8;
+}
+
+.price {
+    font-weight: 900; 
+    color: #696a6b;
 }
