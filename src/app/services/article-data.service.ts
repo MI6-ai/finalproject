@@ -27,5 +27,9 @@ export class ArticleDataService {
   getArticals() {
     return this.artical.slice();
   }
+
+  getArticle(index: number) {
+    return this.artical[index];
+  }
 }
 
