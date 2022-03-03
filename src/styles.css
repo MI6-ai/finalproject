@@ -4,9 +4,7 @@
   body {
       font-family: 'Lato-Regular';
       background-color: #bdcad9;
-background-image: linear-gradient(315deg, #bdcad9 0%, #e1dada 74%);
-
-      
+     background-image: linear-gradient(315deg, #e6e9e7 0%, #fcf9f9 74%);
   }
   *{
     font-family: 'Poppins', sans-serif;
