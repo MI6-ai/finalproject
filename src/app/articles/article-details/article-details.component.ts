@@ -12,10 +12,9 @@ import { Artical } from '../artical.model';
 
 export class ArticleDetailComponent implements OnInit {
   artical: Artical = {
-    name: '',
-    dateOfPublish: new Date(),
+    name: 'Dell Inspiron',
     image: '',
-    publisher: ''
+    
   };
   index: number = 0;
   articalString: string ='';

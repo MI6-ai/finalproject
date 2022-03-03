@@ -8,12 +8,12 @@
     <br>
     <div class="my-container">
         <div class="card-deck">
-            <div class="card" *ngFor="let artical of articals;let i= index">
+            <div class="card" *ngFor="let artical of articals; let i= index">
               <img class="card-img-top" src="{{ artical.image }}" alt="Card image cap">
               <div class="card-body">
                 <h5 class="card-title">{{ artical.name }}</h5>
                 <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-               <button ></button> 
+               <button [routerLink]="[artical]">Read More</button> 
               </div>
             </div>
           </div>
