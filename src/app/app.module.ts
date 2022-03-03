@@ -23,6 +23,7 @@ import { ShopComponent } from './shop/shop.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { AuthInterceptorService } from './shared/auth-interceptor.service';
+import { ArticleDetailComponent } from './articles/article-details/article-details.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { AuthInterceptorService } from './shared/auth-interceptor.service';
     ShopComponent,
     ArticlesComponent,
     LoadingSpinnerComponent,
+    ArticleDetailComponent
   ],
   imports: [
     BrowserModule,
