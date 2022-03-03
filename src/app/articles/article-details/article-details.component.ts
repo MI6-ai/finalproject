@@ -26,16 +26,16 @@ export class ArticleDetailComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.route.params
-      .subscribe(
-        (params: Params) => {
-          this.articalString = params['artical'];
-          if(this.articleService.artical.includes(this.articalString)){
-            this.index = +params['id'];
-          this.artical = this.articleService.getArticals(this.index);
-          }    
-        }
-      );
+    // this.route.params
+    //   .subscribe(
+    //     (params: Params) => {
+    //       this.articalString = params['artical'];
+    //       if(this.articleService.artical.includes(this.articalString)){
+    //         this.index = +params['id'];
+    //       this.artical = this.articleService.getArticals(this.index);
+    //       }    
+    //     }
+    //  );
 
   }
 
