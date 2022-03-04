@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class ArticleDataService {
 
   constructor() { }
-  artical= [
+  articles= [
     {
       name: "Laptop1",
       description: "Let's Talk about...",
@@ -25,11 +25,11 @@ export class ArticleDataService {
   ];
 
   getArticals() {
-    return this.artical.slice();
+    return this.articles.slice();
   }
 
   getArticle(index: number) {
-    return this.artical[index];
+    return this.articles[index-1];
   }
 }
 
