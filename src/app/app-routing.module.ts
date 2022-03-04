@@ -9,6 +9,7 @@ import { ProductDetailComponent } from './products/product-detail/product-detail
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { ProductsComponent } from './products/products.component';
 import { ShopComponent } from './shop/shop.component';
+import { ArticleDetailComponent } from './articles/article-details/article-details.component';
 
 const appRoutes : Routes = [
   { path: '', component: HomeComponent },
@@ -22,7 +23,8 @@ const appRoutes : Routes = [
   { path: 'about', component: AboutComponent},
   { path: 'contact', component: ContactComponent},
   { path: 'shop', component: ShopComponent },
-  { path: 'articles', component: ArticlesComponent }
+  { path: 'articles', component: ArticlesComponent },
+  { path: 'articles/:id', component: ArticleDetailComponent }
 ];
 
 @NgModule({

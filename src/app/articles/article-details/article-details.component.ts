@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ArticleDataService } from 'src/app/services/article-data.service';
-import { Artical } from '../artical.model';
+import { Article } from '../article.model';
 
 @Component({
   selector: 'app-article-details',
@@ -11,7 +11,7 @@ import { Artical } from '../artical.model';
 })
 
 export class ArticleDetailComponent implements OnInit {
-  artical: Artical = {
+  article: Article = {
     name: 'Dell Inspiron',
     image: '',
     
@@ -30,7 +30,7 @@ export class ArticleDetailComponent implements OnInit {
         (params: Params) => {
 
             this.index = +params['id'];
-          this.artical = this.articleService.getArticle(this.index);
+          this.article = this.articleService.getArticle(this.index);
            
         }
      );
