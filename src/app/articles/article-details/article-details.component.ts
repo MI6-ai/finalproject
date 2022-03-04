@@ -14,6 +14,7 @@ export class ArticleDetailComponent implements OnInit {
   article: Article = {
     name: 'Dell Inspiron',
     image: '',
+    essay: ''
     
   };
   index: number = 0;

@@ -8,19 +8,22 @@ export class ArticleDataService {
   constructor() { }
   articles= [
     {
-      name: "Laptop1",
+      name: "Dell Inspiron",
       description: "Let's Talk about...",
-      image: "assets/img/laptop.jpg"
+      image: "assets/img/laptop.jpg",
+      essay: "sample1"
     },
     {
       name: "Steam Deck",
       description: "New face of gaming...",
-      image: "assets/img/steam.jpg"
+      image: "assets/img/steam.jpg",
+      essay: "sample2"
     },
     {
       name: "Wild Gaming!",
       description: "In your wildest...",
-      image: "assets/img/razer.jpg"
+      image: "assets/img/razer.jpg",
+      essay: "sample3"
     }
   ];
 
