@@ -12,8 +12,14 @@ export class ShopComponent implements OnInit {
 
   products =this.shop.getProducts();
 
+  isViewAll = false;
+
   firstSixProducts = this.products.slice(0,6);
   // i: number = 0;
+
+  switch () {
+    this.isViewAll = !this.isViewAll;
+  }
 
   ngOnInit(): void {
   }
