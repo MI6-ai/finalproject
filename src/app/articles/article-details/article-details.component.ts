@@ -11,12 +11,7 @@ import { Article } from '../article.model';
 })
 
 export class ArticleDetailComponent implements OnInit {
-  article: Article = {
-    name: 'Dell Inspiron',
-    image: '',
-    essay: ''
-    
-  };
+  article: Article | undefined;
   index: number = 0;
   articalString: string ='';
 

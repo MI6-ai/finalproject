@@ -24,10 +24,16 @@ export class ArticleDataService {
       description: "In your wildest...",
       image: "assets/img/razer.jpg",
       essay: "sample3"
+    },
+    {
+      name: "Wild Gaming2!",
+      description: "In your wildest...",
+      image: "assets/img/razer.jpg",
+      essay: "sample3"
     }
   ];
 
-  getArticals() {
+  getArticles() {
     return this.articles.slice();
   }
 
