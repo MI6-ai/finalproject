@@ -15,6 +15,7 @@ import { ProductEmptyComponent } from './products/product-empty/product-empty.co
 const appRoutes : Routes = [
   { path: '', component: HomeComponent },
   { path: 'products', component: ProductsComponent, children: [
+    {path: '', redirectTo: 'list', pathMatch:'full'},
     { path: 'list', component: ProductEmptyComponent},
     { path: ':product', component: ProductListComponent },
     { path: ':product/:id', component: ProductDetailComponent }
