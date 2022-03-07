@@ -1,4 +1,12 @@
+import { Product } from "../products/product.model";
+import { Injectable } from '@angular/core';
+
+@Injectable({
+    providedIn: 'root'
+  })
 export class ProductDataService {
+
+    productItem : Product|undefined;
     product : string ='';
     products =['laptops','mobiles','headphones'];
     laptops = [

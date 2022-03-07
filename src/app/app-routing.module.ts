@@ -14,9 +14,8 @@ import { ArticleDetailComponent } from './articles/article-details/article-detai
 const appRoutes : Routes = [
   { path: '', component: HomeComponent },
   { path: 'products', component: ProductsComponent, children: [
-    { path: ':product', component: ProductListComponent, children: [
-      { path: '', component: AboutComponent},
-    ]},
+    { path: 'list', component: AboutComponent},
+    { path: ':product', component: ProductListComponent },
     { path: ':product/:id', component: ProductDetailComponent }
   ]},
   { path: 'guide', component: GuideComponent},
