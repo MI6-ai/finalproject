@@ -1,10 +1,13 @@
-<a  *ngIf="product"
-  [routerLink]="[index]"
-  class="list-group-item"
-  style="cursor: pointer;">
-  <div class="pull-left">
-    <h4 class="list-group-item-heading">{{ product.name }}</h4>
-    <p class="list-group-item-text">{{ product.description }}</p>
-    <p class="list-group-item-text help-text">{{ product.publisher }}, published on {{ product.dateOfPublish }}</p>
-  </div>
-</a>
+
+<div class="card review" *ngIf="product"
+[routerLink]="[index]"
+style="cursor: pointer;"
+>
+  <img class="card-img-top" src="{{ product.image }}" alt="image">
+  <div class="container mt-4">
+    <p class="list-group-item-text">{{ product.dateOfPublish | date}}</p>
+    <h3 style="color: #55311c;" class="list-group-item-heading">{{ product.name }}</h3>
+    <h6 class="list-group-item-text">{{ product.description }}</h6>
+    <br>
+  </div> 
+</div>

@@ -11,7 +11,37 @@ export class ProductDataService {
     products =['laptops','mobiles','headphones'];
     laptops = [
         {
-            name: 'Macbook Air, laptop',
+            name: 'Macbook Air1, laptop',
+            rating: 9,
+            price: 999,
+            description: 'Definitely the best one',
+            review: 'best',
+            publisher: 'Abhishek Rathore',
+            dateOfPublish: new Date('2022-01-27'),
+            image: 'https://i.gadgets360cdn.com/large/apple_macbook_air_M1_2020review_cover_1607598067132.jpg?downsize=950:*'
+        },
+        {
+            name: 'Macbook Air2, laptop',
+            rating: 9,
+            price: 999,
+            description: 'Definitely the best one',
+            review: 'best',
+            publisher: 'Abhishek Rathore',
+            dateOfPublish: new Date('2022-01-27'),
+            image: 'https://i.gadgets360cdn.com/large/apple_macbook_air_M1_2020review_cover_1607598067132.jpg?downsize=950:*'
+        },
+        {
+            name: 'Macbook Air3, laptop',
+            rating: 9,
+            price: 999,
+            description: 'Definitely the best one',
+            review: 'best',
+            publisher: 'Abhishek Rathore',
+            dateOfPublish: new Date('2022-01-27'),
+            image: 'https://i.gadgets360cdn.com/large/apple_macbook_air_M1_2020review_cover_1607598067132.jpg?downsize=950:*'
+        },
+        {
+            name: 'Macbook Air4, laptop',
             rating: 9,
             price: 999,
             description: 'Definitely the best one',
@@ -20,11 +50,6 @@ export class ProductDataService {
             dateOfPublish: new Date('2022-01-27'),
             image: 'https://i.gadgets360cdn.com/large/apple_macbook_air_M1_2020review_cover_1607598067132.jpg?downsize=950:*'
         }
-        // {
-        //     name: 'DELL XPS 17',
-        //     rating: 9,
-        //     price: 1999
-        // }
     ];
 
     mobiles = [
