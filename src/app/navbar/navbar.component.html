@@ -66,6 +66,7 @@
        <div class="input-block">
           <label for="email" class="input-label">Email</label>
           <input 
+          #email
           type="email" 
           name="email" 
           id="email"
@@ -80,10 +81,21 @@
           type="password" 
           name="password" 
           required
-          ngModel
-          class="form-control"
-          id="password" 
+          [(ngModel)]="password"
+          class="form-control pswinput"
+          id="password"
           placeholder="Password">
+          <span *ngIf="!isView">
+            <a style="cursor: pointer;" (click)="isView=true">
+              <p class="eye">View Password</p>
+            </a>
+          </span>
+          
+          <p *ngIf="password!=null && isView" class="viewpswd">{{password}}
+            <span class="closePassword"><button type="button" class="close" (click)="nullPassword()" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button></span>
+          </p>
         </div>
         <div *ngIf="!isLoginMode" class="input-block">
           <span>
@@ -104,7 +116,7 @@
             <span *ngIf="!isLoading">{{ isLoginMode ? 'Login' : 'Sign Up' }}</span>
             <span *ngIf="isLoading"><app-loading-spinner></app-loading-spinner></span>
           </button>
-          <a *ngIf="isLoginMode" href="" class="">Forgot your password?</a>
+          <a *ngIf="isLoginMode" style="cursor: pointer;" (click)="forgetPassword(loginForm)" class="">Forgot your password?</a>
         </div>
         <p class="sign-up">{{ isLoginMode ? "Don't have an account?" : 'Already a User?' }} 
           <a style="cursor: pointer;" (click)="onSwitch()">{{ isLoginMode ? 'Sign Up Now!' : 'Log In Now' }}</a></p>

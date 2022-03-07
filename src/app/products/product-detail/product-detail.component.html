@@ -1,9 +1,18 @@
 <div class="container">
-    <h1 class="list-group-item-heading">{{ product.name }}</h1>
-    <p class="list-group-item-text">{{ product.rating }}/10</p>
-    <p class="list-group-item-text">{{ product.description }}</p>
-    <p class="list-group-item-text help-text">{{ product.publisher }}, published on {{ product.dateOfPublish }}</p>
-    <p class="list-group-item-text">{{ product.price }}</p>
-    <div> <img src="{{ product.image }}" alt="ok"></div>
-    <p class="list-group-item-text">{{ product.review }}</p>
+    <h1 class="name list-group-item-heading">{{ product.name }}</h1>
+
+    <h5 class="list-group-item-text">Priced at:  Rs {{ product.price }}</h5>
+    <br>
+    <h6 class="list-group-item-text">Rated: {{ product.rating }}/10</h6>
+    
+    <p class="mt-2 list-group-item-text help-text">{{ product.publisher }}, published on {{ product.dateOfPublish |date }}</p>
+    
+    <div> <img class="image" src="{{ product.image }}" alt="ok"></div>
+
+    <div class="container infoDiv">
+      <h5 class="list-group-item-text">{{ product.description }}</h5><br>
+      <p class="list-group-item-text">{{ product.review }}</p>
+    </div>
+    
   </div>
+

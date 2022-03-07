@@ -60,6 +60,16 @@ export class AuthService {
       }))
   };
 
+  forget(email: string) {
+    return this.http.post(
+      'https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyCZ8XB6dnU7uaezMQfVhcvI6XjRQfAlL1s',
+      {
+        email: email,
+        requestType: 'PASSWORD_RESET'
+      }
+    )
+  }
+
   logout() {
     this.user.next(null);
     localStorage.removeItem('userdata');

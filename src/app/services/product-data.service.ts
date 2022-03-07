@@ -15,7 +15,7 @@ export class ProductDataService {
             rating: 9,
             price: 999,
             description: 'Definitely the best one',
-            review: 'best',
+            review: "  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae quisquam repellat illum asperiores assumenda quo maiores ipsam necessitatibus soluta deleniti! Repellat excepturi impedit libero ipsum voluptatum deleniti voluptate vel molestias!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, odio earum ipsam nihil quaerat consequuntur a aut tenetur deleniti cum provident quas error minus at alias illo tempore laborum. Labore?",
             publisher: 'Abhishek Rathore',
             dateOfPublish: new Date('2022-01-27'),
             image: 'https://i.gadgets360cdn.com/large/apple_macbook_air_M1_2020review_cover_1607598067132.jpg?downsize=950:*'

@@ -1,0 +1,15 @@
+.name {
+    font-weight: 650;
+    color: #55311c
+}
+
+.image {
+    max-width: 150vh;
+    max-height: 150vh;
+}
+
+.infoDiv {
+    margin-top: 3rem;
+    margin-right: 12rem;
+    width: 850px;
+}

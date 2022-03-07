@@ -1,5 +1,6 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { NewsApiServiceService } from "../services/news-api-service.service"
 
 @Component({
@@ -7,14 +8,15 @@ import { NewsApiServiceService } from "../services/news-api-service.service"
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit, OnDestroy{
 
   constructor(private service: NewsApiServiceService, private route: ActivatedRoute) { }
+  newsSubscription: Subscription = new Subscription();
 
   topHeadingDisplay: any = [];
 
   ngOnInit(): void {
-    this.route.queryParams
+    this.newsSubscription = this.route.queryParams
     .subscribe(
       (result) => {
         if(result['search'])
@@ -28,10 +30,12 @@ export class HomeComponent implements OnInit{
          console.log(result);
          this.topHeadingDisplay = result.articles;
          this.service.NewsApiUrl = this.service.dummyUrl;
-       }
-     )
+       } )
       }
     );
-    
+  }
+
+  ngOnDestroy(): void {
+      this.newsSubscription.unsubscribe();
   }
 }

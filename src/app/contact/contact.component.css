@@ -10,7 +10,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  min-height: 55vh;
   padding: 40px;
 }
 .container{
@@ -113,12 +113,12 @@ form .form-row .textarea{
   position: absolute;
   align-items: center;
   left: -100%;
-  background-color: #045de9;
-  background-image: linear-gradient(315deg, #045de9 0%, #09c6f9 74%);
+  background-color: #8c7569;
   transition: all 0.4s;
 }
 .submit-btn .input-data:hover .inner{
   left: 0;
+  background-color: #55311c;
 }
 .submit-btn .input-data input{
   background: none;
@@ -150,10 +150,8 @@ form .form-row .textarea{
   }
 }
 .title-bar{
-    background-color: #045de9;
-    background-image: linear-gradient(315deg, #045de9 0%, #09c6f9 74%);
     text-align: center;
-    color: white;
+    color: #55311c;
     display: block;
     margin-right: 0px;
     padding-top: 50px;
