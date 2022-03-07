@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ProductDataService } from 'src/app/services/product-data.service';
 import { Product } from '../product.model';
@@ -10,7 +11,11 @@ import { Product } from '../product.model';
 })
 export class ProductListComponent implements OnInit {
   // product : string ='';
-  products : Product[] = []
+  products : Product[] = [];
+
+  isSearched = false;
+  searchedProducts: Product[] = [];
+  searchProduct: string = '';
 
   constructor(private route : ActivatedRoute,
     private ProductDataService: ProductDataService) { }
@@ -23,6 +28,20 @@ export class ProductListComponent implements OnInit {
     this.products = this.ProductDataService.getProducts();
     }
     );
+  }
+
+  SearchProducts(form: any) {
+    this.isSearched = true;
+    this.searchProduct = form.searchproduct;
+    // console.log(this.searchProduct);
+    for(let prod of this.products)
+    {
+      if(prod.name.toLowerCase().includes(this.searchProduct.toLowerCase()))
+      {
+        this.searchedProducts.push(prod);
+      }
+    }
+    // console.log(this.searchedProducts)
   }
 
 }
