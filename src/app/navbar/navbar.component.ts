@@ -87,6 +87,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.NewsApiService.searchquery = this.searchQuery;
   }
 
+  goToBottom(){
+    window.scrollTo(0,document.body.scrollHeight);
+  }
+
   updateHome(){
     this.router.navigate(['/'], {relativeTo: this.route});
   }
