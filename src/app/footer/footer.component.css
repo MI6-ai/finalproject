@@ -1,20 +1,20 @@
 .fa-facebook {  
   background: #3B5998;  
-  color: white;  
+  color: black;  
 }
 
 .div{
-background-color: #045de9;
+background-color: white;
 align-items: center;
 }
 .h2{
 text-align: center;
-color: white;
+color: black;
 padding-top: 20px;
 }
 
 a {
-color: white;
+color: black;
 
 }
 a:hover {
@@ -23,7 +23,7 @@ color: black;
 .p {
 text-align: center;
 font-size: x-large;
-padding-bottom: 20pxwwwwwwwwwwwww;
+padding-bottom: 20px;
 }
 .links {
 display: inline-flex;

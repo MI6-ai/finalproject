@@ -2,6 +2,8 @@
     display: inline;
     padding-right: 40px;
 }
+
+
 span{
     padding-top: 25px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -28,7 +30,7 @@ span{
     height: 50px;
     border-style: dashed;
     outline: none;
-    background: #00b7ff;
+    background: #55311c;
     color: #fff;
     cursor: pointer;
     position: relative;
@@ -92,12 +94,10 @@ span{
     }
   }
   .title-bar{
-    background-color: #045de9;
-    background-image: linear-gradient(315deg, #045de9 0%, #09c6f9 74%);
+    color: #55311c;
     text-align: center;
-    color: white;
     display: block;
     margin-right: 0px;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 40px;
+    padding-bottom: 40px;
   }

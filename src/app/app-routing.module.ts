@@ -10,11 +10,12 @@ import { ProductListComponent } from './products/product-list/product-list.compo
 import { ProductsComponent } from './products/products.component';
 import { ShopComponent } from './shop/shop.component';
 import { ArticleDetailComponent } from './articles/article-details/article-details.component';
+import { ProductEmptyComponent } from './products/product-empty/product-empty.component';
 
 const appRoutes : Routes = [
   { path: '', component: HomeComponent },
   { path: 'products', component: ProductsComponent, children: [
-    { path: 'list', component: AboutComponent},
+    { path: 'list', component: ProductEmptyComponent},
     { path: ':product', component: ProductListComponent },
     { path: ':product/:id', component: ProductDetailComponent }
   ]},

@@ -24,6 +24,7 @@ import { ArticlesComponent } from './articles/articles.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { AuthInterceptorService } from './shared/auth-interceptor.service';
 import { ArticleDetailComponent } from './articles/article-details/article-details.component';
+import { ProductEmptyComponent } from './products/product-empty/product-empty.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ArticleDetailComponent } from './articles/article-details/article-detai
     ShopComponent,
     ArticlesComponent,
     LoadingSpinnerComponent,
-    ArticleDetailComponent
+    ArticleDetailComponent,
+    ProductEmptyComponent
   ],
   imports: [
     BrowserModule,

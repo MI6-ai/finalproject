@@ -14,11 +14,11 @@
             aria-label="Search">
 
             <button  
-             class="btn searchbtn my-2 my-sm-0" 
+             class="input-button my-2 my-sm-0" 
              type="submit" 
              routerLink="/"
              [queryParams]="{ search: searchQuery}"
-            ><img src="https://img.icons8.com/ios/50/000000/search--v1.png"/>
+            >Search
            </button>
           </form> 
           
@@ -43,12 +43,12 @@
       
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item"><a class="nav-link list2" routerLink="/">Home</a></li>
-            <li class="nav-item"><a class="nav-link list2" routerLink="/products">Products</a></li>
-            <li class="nav-item"><a class="nav-link list2" routerLink="/guide">Guide</a></li>
-            <li class="nav-item"><a class="nav-link list2" routerLink="/articles">Articles</a></li>
-            <li class="nav-item"><a class="nav-link list2" routerLink="/about">About</a></li>
-            <li class="nav-item"><a class="nav-link list2" routerLink="/contact">Contact</a></li>
+            <li class="nav-item"><a class="nav-link list1" routerLink="/">Home</a></li>
+            <li class="nav-item"><a class="nav-link list1" routerLink="/products/list">Products</a></li>
+            <li class="nav-item"><a class="nav-link list1" routerLink="/guide">Guide</a></li>
+            <li class="nav-item"><a class="nav-link list1" routerLink="/articles">Articles</a></li>
+            <li class="nav-item"><a class="nav-link list1" routerLink="/about">About</a></li>
+            <li class="nav-item"><a class="nav-link list1" routerLink="/contact">Contact</a></li>
           </ul>
         </div>
       </nav>
