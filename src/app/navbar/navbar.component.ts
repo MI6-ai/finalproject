@@ -20,6 +20,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   error:string = "";
   isLoading = false;
   isForget = false;
+  reset: string ='';
 
   private userSub: Subscription | undefined;
   isAuthenticated = false;
@@ -150,7 +151,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     })
 
     loginform.reset();
-    setTimeout(() => this.error="",5000)
+    setTimeout(() => this.error="",3500)
 
   }
 
@@ -164,13 +165,21 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   forgetPassword(loginform: NgForm) {
     const email = loginform.value.email;
-    this.authService.forget(email).subscribe(
-      {
-        next: (resData) => {
-          console.log(resData);
-        }
+    
+    let ForgetObs = this.authService.forget(email);
+    ForgetObs.subscribe({
+        next: (resData: any) => {
+          this.isForget = false;
+          this.reset = 'Password reset link sent!'
+        },
+      error: (eMsg) => {
+        console.log(eMsg);
+        this.isForget = false;
+        this.error = eMsg;
       }
-    )
+    });
+    
+    setTimeout(() => this.error="",3500)
   }
 
   ngOnDestroy(): void {

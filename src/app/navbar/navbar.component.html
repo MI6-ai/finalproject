@@ -62,6 +62,9 @@
         <div *ngIf="error">
           <p class="alert alert-danger">{{ error }}</p>
         </div>
+        <div *ngIf="reset">
+          <p class="alert alert-primary">{{ reset }}</p>
+        </div>
         <form class="form-group" (ngSubmit)="onLogin(loginForm)" #loginForm="ngForm">
        <div class="input-block">
           <label for="email" class="input-label">Email</label>

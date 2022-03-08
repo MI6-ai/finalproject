@@ -67,7 +67,7 @@ export class AuthService {
         email: email,
         requestType: 'PASSWORD_RESET'
       }
-    )
+    ).pipe(catchError(this.handleError))
   }
 
   logout() {
