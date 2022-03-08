@@ -1,12 +1,54 @@
 
-<div class="row d-flex justify-content-center">
-    <app-product-item class="item col-sm-4 mx-5"
-    *ngFor="let prod of products; let i= index"
-    [product]="prod"
-    [index] = "i+1"
-   >
-   </app-product-item>
+<div class="container">
+    <form #searchForm="ngForm" class="form-center form-inline" (ngSubmit)="SearchProducts(searchForm.value)">
+        <input 
+            [(ngModel)]="searchProduct" 
+            class="form-control" 
+            name="searchproduct" 
+            type="text" 
+            placeholder="Search Products Here!" 
+            aria-label="Search">
+
+        <button  
+             class="mx-3 input-button" 
+             type="submit" 
+            >Search
+        </button>
+    </form>
+           
 </div>
+
+<br><br>
+
+<div *ngIf="searchedProducts.length>0">
+    <div class="row d-flex justify-content-center">
+        <app-product-item class="item col-sm-4 mx-5"
+        *ngFor="let prod of searchedProducts; let i= index"
+        [product]="prod"
+        [index] = "i+1"
+       >
+       </app-product-item>
+    </div>
+</div>
+
+<div *ngIf="searchedProducts.length==0 && !isSearched">
+    <div class="row d-flex justify-content-center">
+        <app-product-item class="item col-sm-4 mx-5"
+        *ngFor="let prod of products; let i= index"
+        [product]="prod"
+        [index] = "i+1"
+       >
+       </app-product-item>
+    </div>
+</div>
+
+
+<div *ngIf="searchedProducts.length==0 && isSearched">
+    <div class="justify-content-center d-flex mt-5">
+        <h5 class="alert alert-danger">No Product Found!</h5>   
+    </div>
+</div>
+
            
     
 

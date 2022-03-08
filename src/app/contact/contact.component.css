@@ -10,7 +10,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  min-height: 55vh;
   padding: 40px;
 }
 .container{
@@ -20,6 +20,7 @@
   padding: 25px 40px 10px 40px;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
   border-radius: 20px;
+  margin-bottom: 100px;
 }
 .container .text{
   text-align: center;
@@ -113,12 +114,12 @@ form .form-row .textarea{
   position: absolute;
   align-items: center;
   left: -100%;
-  background-color: #045de9;
-  background-image: linear-gradient(315deg, #045de9 0%, #09c6f9 74%);
+  background-color: #8c7569;
   transition: all 0.4s;
 }
 .submit-btn .input-data:hover .inner{
   left: 0;
+  background-color: #55311c;
 }
 .submit-btn .input-data input{
   background: none;

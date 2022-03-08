@@ -14,6 +14,8 @@ import { User } from '../shared/user.model';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
 
+  password: string | null= null;
+  isView = true;
   isLoginMode = true;
   error:string = "";
   isLoading = false;
@@ -23,6 +25,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   onSwitch() {
     this.isLoginMode = !this.isLoginMode;
+  }
+
+  nullPassword() {
+    this.isView = false;
   }
   
   searchQuery: string ='';
@@ -79,6 +85,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
   SearchF(form: any) {
     this.searchQuery = form.searchBar;
     this.NewsApiService.searchquery = this.searchQuery;
+  }
+
+  goToBottom(){
+    window.scrollTo(0,document.body.scrollHeight);
   }
 
   updateHome(){
@@ -147,6 +157,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.authService.logout();
   }
 
+  forgetPassword(loginform: NgForm) {
+    const email = loginform.value.email;
+    this.authService.forget(email).subscribe(
+      {
+        next: (resData) => {
+          console.log(resData);
+        }
+      }
+    )
+  }
 
   ngOnDestroy(): void {
     if(this.userSub){
