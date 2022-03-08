@@ -19,12 +19,17 @@ export class NavbarComponent implements OnInit, OnDestroy {
   isLoginMode = true;
   error:string = "";
   isLoading = false;
+  isForget = false;
 
   private userSub: Subscription | undefined;
   isAuthenticated = false;
 
   onSwitch() {
     this.isLoginMode = !this.isLoginMode;
+  }
+
+  onSwitchForget() {
+    this.isForget = !this.isForget;
   }
 
   nullPassword() {
