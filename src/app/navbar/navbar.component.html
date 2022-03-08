@@ -75,7 +75,10 @@
           placeholder="Email"
           required>
         </div>
-        <div class="input-block">
+        <div *ngIf="isForget">
+          <p class="alert alert-primary" style="font-size: smaller;">Please Enter your Email!</p>
+        </div>
+        <div *ngIf="!isForget" class="input-block">
           <label for="password" class="input-label">Password</label>
           <input 
           type="password" 
@@ -112,11 +115,15 @@
         </div>
         <div class="modal-buttons">
           
-          <button class="input-button" type="submit">
+          <button *ngIf="!isForget" class="input-button" type="submit">
             <span *ngIf="!isLoading">{{ isLoginMode ? 'Login' : 'Sign Up' }}</span>
             <span *ngIf="isLoading"><app-loading-spinner></app-loading-spinner></span>
           </button>
-          <a *ngIf="isLoginMode" style="cursor: pointer;" (click)="forgetPassword(loginForm)" class="">Forgot your password?</a>
+          <button *ngIf="isForget" (click)="forgetPassword(loginForm)" class="input-button" type="button">
+            <span>Reset</span>           
+          </button>
+
+          <a *ngIf="isLoginMode" style="cursor: pointer;" (click)="onSwitchForget()" class="">{{isForget ? 'Go Back!' : 'Forgot Your Password?'}}</a>
         </div>
         <p class="sign-up">{{ isLoginMode ? "Don't have an account?" : 'Already a User?' }} 
           <a style="cursor: pointer;" (click)="onSwitch()">{{ isLoginMode ? 'Sign Up Now!' : 'Log In Now' }}</a></p>
