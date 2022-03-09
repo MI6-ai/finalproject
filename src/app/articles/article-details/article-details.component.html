@@ -1,9 +1,15 @@
 
 <div *ngIf="article" class="container">
-    <div>
-    <h4 class="name list-group-item-heading">{{ article.name }}</h4>
-    <h6>by: <br>{{ article.publisher }}</h6>
-   </div>
-    <div> <img class="img-fluid" src="{{ article.image }}" alt="ok"></div>
-    <div><p class="card-text">"{{article.essay}}"</p></div>
+    <div class="top">
+      <h1 class="name list-group-item-heading">{{ article.name }}</h1>
+      <br>
+      <h6>by: <br>{{ article.publisher }}</h6>
+    </div>
+    <br>
+    <div> 
+      <img class="image img-fluid" src="{{ article.image }}" alt="ok">
+    </div>
+    <div class="container infoDiv">
+       <p class="paragraph">"{{article.essay}}"</p>
+    </div>
 </div>
