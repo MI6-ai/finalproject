@@ -20,6 +20,7 @@
 }
 
 .infoDiv {
+<<<<<<< HEAD
     width: 1000px;
     align-items: center;
     display: block;
@@ -35,6 +36,23 @@
 .content {
 	padding: 1em 1.5em;
 	justify-self: center;
+=======
+    margin-top: 3rem;
+    margin-right: 12rem;
+    width: 850px;
 }
+
+.card-text{
+  text-align: center;
+  display: block;
+  padding-bottom: 50px;
+  border-radius: 30px;
+  background:#d1987a;;
+  padding: 20px;
+  font-weight: 600;
+   height: auto;
+>>>>>>> 1ee1c4e3e5dc07ac1de8aca422a588036cabb72b
+}
+
 
 
