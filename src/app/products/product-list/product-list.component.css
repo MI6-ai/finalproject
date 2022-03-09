@@ -7,6 +7,11 @@
     justify-content: center;
   }
 
+.goBack {
+  cursor: pointer;
+  color: #55311c;
+}
+
   .input-button {
     padding: 8px 12px;
     outline: none;

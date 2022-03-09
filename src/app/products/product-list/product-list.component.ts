@@ -31,6 +31,7 @@ export class ProductListComponent implements OnInit {
   }
 
   SearchProducts(form: any) {
+    this.searchedProducts = [];
     this.isSearched = true;
     this.searchProduct = form.searchproduct;
     // console.log(this.searchProduct);
@@ -41,7 +42,6 @@ export class ProductListComponent implements OnInit {
         this.searchedProducts.push(prod);
       }
     }
-    // console.log(this.searchedProducts)
   }
 
 }
