@@ -29,23 +29,8 @@
   background:#d1987a;;
   padding: 20px;
   font-weight: 600;
-  block-size: 400px;
+
 }
-.headline {
-	position: relative;
-	font-size: 2.5rem;
-	text-shadow: 0 0 0.5em 0 0 1em rgb(83, 32, 32);
-	border-top: 0.6rem solid;
-	border-right: 0.6rem solid;
-	border-bottom: 0.6rem solid rgb(83, 32, 32);
-	border-radius: 0 1rem 1rem 0;
-	padding: 0.8em 0em;
-	text-transform: uppercase;
-}
-.content {
-	padding: 1em 1.5em;
-	max-width: 70%;
-	justify-self: center;
-}
+
 
 
