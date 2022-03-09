@@ -1,8 +1,9 @@
-import { ConstantPool } from '@angular/compiler';
+
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Form, NgForm } from '@angular/forms';
-import { ActivatedRoute, Event, Router } from '@angular/router';
-import { Observable, Subscription, throwError } from 'rxjs';
+import { map } from 'rxjs/operators'
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable, Subject, Subscription, throwError } from 'rxjs';
 import { AuthResponseData, AuthService } from '../services/auth.service';
 import { NewsApiServiceService } from '../services/news-api-service.service';
 import { User } from '../shared/user.model';
@@ -21,6 +22,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
   isLoading = false;
   isForget = false;
   reset: string ='';
+  isAdmin = false;
+  admins : any;
+  adminEmails : string[] = [];
+
 
   private userSub: Subscription | undefined;
   isAuthenticated = false;
@@ -31,6 +36,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   onSwitchForget() {
     this.isForget = !this.isForget;
+  }
+
+  onSwitchAdmin() {
+    this.isAdmin = !this.isAdmin;
   }
 
   nullPassword() {
@@ -55,8 +64,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.modal = document.querySelector(".modal");
     this.modalButton = document.querySelector(".modal-button");
     const closeButton: any = document.querySelector(".close-button");
-    const scrollDown: any = document.querySelector(".scroll-down");
-    let isOpened = false;
+    // const scrollDown: any = document.querySelector(".scroll-down");
+    // let isOpened = false;
 
     const openModal = () => {
      this.modal.classList.add("is-open");
@@ -120,6 +129,37 @@ export class NavbarComponent implements OnInit, OnDestroy {
      }
     }
 
+    if(this.isAdmin){
+      
+      this.authService.admin()
+      .pipe(map(resData => {
+        const adminArray = [];
+        for (const key in resData) {
+          if(resData.hasOwnProperty(key)) {          
+            adminArray.push({...resData[key], id: key})
+          }
+        }
+        return adminArray;
+      }))
+      .subscribe(
+        (result) => {
+          for (let res in result) {
+            this.adminEmails.push(result[res].email);
+          }
+          console.log(this.adminEmails);
+          if(this.adminEmails.includes(email)){
+            this.authService.isAdmin = true;
+          }
+          else{
+            this.error = "You are not an Admin! Logging in as a User."; 
+            alert(this.error)
+            this.isLoading = false;
+            loginform.reset();
+            setTimeout(() => this.error="",3000);
+          }
+        }
+      )
+
     let AuthObs: Observable<AuthResponseData>
 
     if(this.isLoginMode)
@@ -130,7 +170,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     {
       AuthObs = this.authService.signup(email,password);
     }
-
+    
+    
     AuthObs.subscribe({
       next: (resData) => {
         console.log(resData);
@@ -155,12 +196,17 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   }
 
+ }
+
+    
+
   onLogout() {
     this.modalButton.addEventListener("click", () => {
       this.modal.classList.add("is-open");
       this.body.style.overflow = "hidden";
     });
     this.authService.logout();
+    this.authService.isAdmin = false;
   }
 
   forgetPassword(loginform: NgForm) {

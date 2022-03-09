@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError,tap } from 'rxjs/operators';
 import { User } from '../shared/user.model';
 
@@ -21,6 +21,7 @@ export class AuthService {
 
   user = new BehaviorSubject<any>(null);
   private tokenExpTimer: any;
+  isAdmin = false;
 
   constructor(private http: HttpClient) { }
 
@@ -70,6 +71,13 @@ export class AuthService {
     ).pipe(catchError(this.handleError))
   }
 
+
+  admin(): Observable<any> {
+    return this.http.get(
+      'https://techlead-e4ee9-default-rtdb.firebaseio.com/Admins.json'
+    )
+  }
+
   logout() {
     this.user.next(null);
     localStorage.removeItem('userdata');
@@ -86,7 +94,7 @@ export class AuthService {
     if(!userData) {
       return;
     }
-    const loadedUser = new User(userData.email, userData.id, userData._token, new Date(userData._tokenExpirationDate));
+    const loadedUser = new User(userData.email, userData.id, userData._token, new Date(userData._tokenExpirationDate), userData.isAdmin);
     if(loadedUser.token) {
       this.user.next(loadedUser);
       this.autoLogout((new Date(userData._tokenExpirationDate).getTime() - new Date().getTime()));
@@ -106,10 +114,11 @@ export class AuthService {
     expiresIn: number
   ) {
     const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
-    const user = new User(email, userId, token, expirationDate);
+    const user = new User(email, userId, token, expirationDate, this.isAdmin);
     this.user.next(user);
-    this.autoLogout(expiresIn * 1000);
 
+    console.log(this.user.value);
+    this.autoLogout(expiresIn * 1000);
     localStorage.setItem('userdata', JSON.stringify(user));
   }
 
