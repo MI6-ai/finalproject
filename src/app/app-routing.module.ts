@@ -5,27 +5,21 @@ import { ContactComponent } from './contact/contact.component';
 import { GuideComponent } from './guide/guide.component';
 import { ArticlesComponent } from './articles/articles.component'
 import { HomeComponent } from './home/home.component';
-import { ProductDetailComponent } from './products/product-detail/product-detail.component';
-import { ProductListComponent } from './products/product-list/product-list.component';
-import { ProductsComponent } from './products/products.component';
 import { ShopComponent } from './shop/shop.component';
 import { ArticleDetailComponent } from './articles/article-details/article-details.component';
-import { ProductEmptyComponent } from './products/product-empty/product-empty.component';
 
 const appRoutes : Routes = [
   { path: '', component: HomeComponent },
-  { path: 'products', component: ProductsComponent, children: [
-    {path: '', redirectTo: 'list', pathMatch:'full'},
-    { path: 'list', component: ProductEmptyComponent},
-    { path: ':product', component: ProductListComponent },
-    { path: ':product/:id', component: ProductDetailComponent }
-  ]},
+  {
+    path: 'products', loadChildren: () => import('./products/product.module').then(m => m.ProductModule)
+  },
+  {
+    path: 'articles', loadChildren: () => import('./articles/articles.module').then(m => m.ArticleModule)
+  },
   { path: 'guide', component: GuideComponent},
   { path: 'about', component: AboutComponent},
   { path: 'contact', component: ContactComponent},
-  { path: 'shop', component: ShopComponent },
-  { path: 'articles', component: ArticlesComponent },
-  { path: 'articles/:id', component: ArticleDetailComponent }
+  { path: 'shop', component: ShopComponent }
 ];
 
 @NgModule({
