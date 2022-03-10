@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError,tap } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { User } from '../shared/user.model';
 
 export interface AuthResponseData {
@@ -27,7 +28,7 @@ export class AuthService {
 
   signup(email: string, password: string) {
     return this.http.post<AuthResponseData>(
-      'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCZ8XB6dnU7uaezMQfVhcvI6XjRQfAlL1s',
+      'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key='+ environment.firebaseAPIkey,
       {
         email: email,
         password: password,
@@ -45,7 +46,7 @@ export class AuthService {
 
   login(email:string,password:string) {
     return this.http.post<AuthResponseData>(
-      'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCZ8XB6dnU7uaezMQfVhcvI6XjRQfAlL1s',
+      'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' + environment.firebaseAPIkey,
       {
         email: email,
         password: password,
@@ -63,7 +64,7 @@ export class AuthService {
 
   forget(email: string) {
     return this.http.post(
-      'https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyCZ8XB6dnU7uaezMQfVhcvI6XjRQfAlL1s',
+      'https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key='+ environment.firebaseAPIkey,
       {
         email: email,
         requestType: 'PASSWORD_RESET'

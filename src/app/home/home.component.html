@@ -1,6 +1,31 @@
+<br><br><br>
+<div class="col-sm-8">
+   <span *ngFor="let heading of topHeadingDisplay">
+      <a style="cursor: pointer;" *ngIf="heading.urlToImage && heading.title">
+         <div class="card">
+            <div class="row">
+               <div class="fill col-sm-3">
+                  <img src="{{heading.urlToImage}}" class="card-img-top" alt="image">
+               </div>
+               <div class="col-sm-9">
+                  <h5 class="heading">{{ heading.title }}</h5>
+                  <p class="date">{{heading.publishedAt | date }}</p>
+                  <p class="desc">{{ heading.description | slice:0:150 }}...</p>
+               </div>
+            </div>
+         </div>
+         <br>
+      </a>
+   </span>
+   
+</div>
 
-<div *ngFor="let heading of topHeadingDisplay">
+
+
+<!-- <div *ngFor="let heading of topHeadingDisplay">
    <h3>{{ heading.title }}</h3> 
    <img src="{{heading.urlToImage}}" alt="">
    <p>{{ heading.content }}</p>
 </div>
+</div> -->
+

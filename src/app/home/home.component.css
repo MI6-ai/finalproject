@@ -1,2 +1,24 @@
+.fill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+.fill img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%
+}
 
-   
+.heading {
+    color: #55311c;
+}
+
+.date {
+    font-size: small;
+    color: #8a786e;
+    margin-top: -2px;
+}
+.desc {
+    margin-right: 20px;
+}
