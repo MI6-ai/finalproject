@@ -3,10 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { GuideComponent } from './guide/guide.component';
-import { ArticlesComponent } from './articles/articles.component'
 import { HomeComponent } from './home/home.component';
 import { ShopComponent } from './shop/shop.component';
-import { ArticleDetailComponent } from './articles/article-details/article-details.component';
+import { AuthGuard } from './services/auth.guard';
 
 const appRoutes : Routes = [
   { path: '', component: HomeComponent },
@@ -16,7 +15,7 @@ const appRoutes : Routes = [
   {
     path: 'articles', loadChildren: () => import('./articles/articles.module').then(m => m.ArticleModule)
   },
-  { path: 'guide', component: GuideComponent},
+  { path: 'guide', component: GuideComponent, canActivate: [AuthGuard]},
   { path: 'about', component: AboutComponent},
   { path: 'contact', component: ContactComponent},
   { path: 'shop', component: ShopComponent }
