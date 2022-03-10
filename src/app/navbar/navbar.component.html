@@ -116,8 +116,12 @@
         </div>
         <div class="modal-buttons">
           
-          <button *ngIf="!isForget" class="input-button" type="submit">
+          <button *ngIf="!isForget && !isAdmin" class="input-button" type="submit">
             <span *ngIf="!isLoading">{{ isLoginMode ? 'Login' : 'Sign Up' }}</span>
+            <span *ngIf="isLoading"><app-loading-spinner></app-loading-spinner></span>
+          </button>
+          <button *ngIf="!isForget && isAdmin" (click)="onAdminLogin(loginForm)" class="input-button" type="button">
+            <span *ngIf="!isLoading">Login</span>
             <span *ngIf="isLoading"><app-loading-spinner></app-loading-spinner></span>
           </button>
           <button *ngIf="isForget" (click)="forgetPassword(loginForm)" class="input-button" type="button">

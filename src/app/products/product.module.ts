@@ -7,6 +7,7 @@ import { ProductEmptyComponent } from "./product-empty/product-empty.component";
 import { ProductItemComponent } from "./product-list/product-item/product-item.component";
 import { ProductListComponent } from "./product-list/product-list.component";
 import { ProductsComponent } from './products.component';
+import { ProductSpecsComponent } from './product-detail/product-specs/product-specs.component';
 
 @NgModule({
     declarations: [
@@ -14,7 +15,8 @@ import { ProductsComponent } from './products.component';
         ProductListComponent,
         ProductDetailComponent,
         ProductItemComponent,
-        ProductEmptyComponent
+        ProductEmptyComponent,
+        ProductSpecsComponent
     ],
     imports: [
         RouterModule.forChild([
