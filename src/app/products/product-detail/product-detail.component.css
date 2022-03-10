@@ -13,3 +13,10 @@
     margin-right: 12rem;
     width: 850px;
 }
+
+
+.card-img-top {
+    max-height: 500px;
+    max-width: 400px;
+    margin-left: 250px;
+}

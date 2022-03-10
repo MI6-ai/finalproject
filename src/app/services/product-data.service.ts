@@ -1,10 +1,14 @@
 import { Product } from "../products/product.model";
 import { Injectable } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
   })
 export class ProductDataService {
+
+    constructor(private http: HttpClient) {}
 
     productItem : Product|undefined;
     product : string ='';
@@ -15,7 +19,7 @@ export class ProductDataService {
             rating: 9,
             price: 999,
             description: 'Definitely the best one',
-            review: "  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae quisquam repellat illum asperiores assumenda quo maiores ipsam necessitatibus soluta deleniti! Repellat excepturi impedit libero ipsum voluptatum deleniti voluptate vel molestias!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, odio earum ipsam nihil quaerat consequuntur a aut tenetur deleniti cum provident quas error minus at alias illo tempore laborum. Labore?",
+            review: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae quisquam repellat illum asperiores assumenda quo maiores ipsam necessitatibus soluta deleniti! Repellat excepturi impedit libero ipsum voluptatum deleniti voluptate vel molestias!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, odio earum ipsam nihil quaerat consequuntur a aut tenetur deleniti cum provident quas error minus at alias illo tempore laborum. Labore?",
             publisher: 'Abhishek Rathore',
             dateOfPublish: new Date('2022-01-27'),
             image: 'https://i.gadgets360cdn.com/large/apple_macbook_air_M1_2020review_cover_1607598067132.jpg?downsize=950:*'
@@ -104,21 +108,24 @@ export class ProductDataService {
     //     }
     // ]
 
-    getProducts()
-    {
+
+    getProducts() : Observable<any>
+    {      
         switch(this.product) {
-            case 'laptops': return this.laptops.slice();
+            
+            case 'laptops': return this.http.get('https://techlead-e4ee9-default-rtdb.firebaseio.com/reviews/laptops.json');
             break;
-            case 'mobiles': return this.mobiles.slice();
+            case 'mobiles': return this.http.get('https://techlead-e4ee9-default-rtdb.firebaseio.com/reviews/mobiles.json');
             break;
-            case 'headphones': return this.headphones.slice();
-            break;
+            // case 'headphones': return this.headphones.slice();
+            // break;
         }
-        return this.laptops.slice();
+        return this.http.get('https://techlead-e4ee9-default-rtdb.firebaseio.com/reviews.json')
     }
 
     getProduct(index: number)
     {
+
         switch(this.product) {
             case 'laptops': return this.laptops[index-1];
             break;

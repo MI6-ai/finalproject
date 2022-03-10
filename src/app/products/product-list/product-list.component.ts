@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
+import { map } from 'rxjs/operators';
 import { ProductDataService } from 'src/app/services/product-data.service';
 import { Product } from '../product.model';
 
@@ -24,8 +24,24 @@ export class ProductListComponent implements OnInit {
     this.route.params.subscribe(
     (params: Params) => {
       this.ProductDataService.product = params['product'];
-      // console.log(this.ProductDataService.product);
-    this.products = this.ProductDataService.getProducts();
+      this.ProductDataService.getProducts()
+      .pipe(map(resData => {
+        const ProdArray: any = [];
+        for (const key in resData) {
+          if(resData.hasOwnProperty(key)) {          
+            ProdArray.push({...resData[key], id: key})
+          }
+        }
+        return ProdArray;
+      }))
+      .subscribe(
+        (resData) => {
+          console.log(resData);
+          this.products = resData;
+        }
+      )
+
+    // this.products = this.ProductDataService.getProducts();
     }
     );
   }

@@ -1,9 +1,9 @@
 
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Form, NgForm } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { map } from 'rxjs/operators'
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, Subject, Subscription, throwError } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { AuthResponseData, AuthService } from '../services/auth.service';
 import { NewsApiServiceService } from '../services/news-api-service.service';
 import { User } from '../shared/user.model';
@@ -128,37 +128,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
        return;
      }
     }
-
-    // if(this.isAdmin){
-      
-      // this.authService.admin()
-      // .pipe(map(resData => {
-      //   const adminArray = [];
-      //   for (const key in resData) {
-      //     if(resData.hasOwnProperty(key)) {          
-      //       adminArray.push({...resData[key], id: key})
-      //     }
-      //   }
-      //   return adminArray;
-      // }))
-      // .subscribe(
-      //   (result) => {
-      //     for (let res in result) {
-      //       this.adminEmails.push(result[res].email);
-      //     }
-      //     console.log(this.adminEmails);
-      //     if(this.adminEmails.includes(email)){
-      //       this.authService.isAdmin = true;
-      //     }
-      //     else{
-      //       this.error = "You are not an Admin! Logging in as a User."; 
-      //       alert(this.error)
-      //       this.isLoading = false;
-      //       loginform.reset();
-      //       setTimeout(() => this.error="",3000);
-      //     }
-      //   }
-      // )
 
     let AuthObs: Observable<AuthResponseData>
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 import { ProductDataService } from 'src/app/services/product-data.service';
 import { Product } from '../product.model';
 
@@ -32,9 +33,28 @@ export class ProductDetailComponent implements OnInit {
       .subscribe(
         (params: Params) => {
           this.productString = params['product'];
+          this.productService.product = this.productString;
           if(this.productService.products.includes(this.productString)){
             this.index = +params['id'];
-          this.product = this.productService.getProduct(this.index);
+
+            this.productService.getProducts()
+            .pipe(map(resData => {
+              const ProdArray: any = [];
+              for (const key in resData) {
+                if(resData.hasOwnProperty(key)) {          
+                  ProdArray.push({...resData[key], id: key})
+                }
+              }
+              return ProdArray;
+            }))
+            .subscribe(
+              (resData) => {
+                console.log(resData);
+                this.product = resData[this.index-1];
+              }
+            )
+
+          // this.product = this.productService.getProduct(this.index);
           }    
         }
       );

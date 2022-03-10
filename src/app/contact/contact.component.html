@@ -1,4 +1,4 @@
-<br><br>
+<!-- <br><br>
    <div class="container-fluid title-bar">
       <h1>Contact Us</h1>
       <h4>Write to Us...</h4>
@@ -25,7 +25,85 @@
                   <textarea ngModel name="msg" rows="8" cols="80" required></textarea>
                   <br />
                   <div class="underline"></div>
-                  <label for="">Write your message</label>
+                  <label for="msg">Write your message</label>
+                  <br />
+                  <div class="form-row submit-btn">
+                     <div class="input-data">
+                        <div class="inner"></div>
+                        <input type="submit" value="submit">
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </form>
+      </div>
+   </div> -->
+ 
+
+   <br><br>
+   <div class="container-fluid title-bar">
+      <h1>Contact Us</h1>
+      <h4>Write to Us...</h4>
+   </div>
+   <div class="new-body">
+      <div class="container">
+         <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
+            <div class="form-row">
+               <div class="input-data">
+                  <input ngModel name="name" type="text" required>
+                  <div class="underline"></div>
+                  <label for="">Name</label>
+               </div>
+            </div>
+            <div class="form-row">
+               <div class="input-data">
+                  <input ngModel name="rating" type="text" required>
+                  <div class="underline"></div>
+                  <label for="">rating</label>
+               </div>
+            </div>
+            <div class="form-row">
+               <div class="input-data">
+                  <input ngModel name="price" type="text" required>
+                  <div class="underline"></div>
+                  <label for="">price</label>
+               </div>
+            </div>
+            <div class="form-row">
+               <div class="input-data">
+                  <input ngModel name="publisher" type="text" required>
+                  <div class="underline"></div>
+                  <label for="">publisher</label>
+               </div>
+            </div>
+            <div class="form-row">
+               <div class="input-data">
+                  <br>
+                  <input ngModel name="dateOfPublish" type="date" required>             
+                  <div class="underline"></div>
+                  <label for="">DOP</label>
+               </div>
+            </div>
+            <div class="form-row">
+               <div class="input-data">
+                  <input ngModel name="image" type="text" required>
+                  <div class="underline"></div>
+                  <label for="">image</label>
+               </div>
+            </div>
+            <div class="form-row">
+               <div class="input-data">
+                  <input ngModel name="description" type="text" required>
+                  <div class="underline"></div>
+                  <label for="description">Email Address/description</label>
+               </div>
+            </div>
+            <div class="form-row">
+               <div class="input-data textarea">
+                  <textarea ngModel name="review" rows="8" cols="80" required></textarea>
+                  <br />
+                  <div class="underline"></div>
+                  <label for="msg">Write your message</label>
                   <br />
                   <div class="form-row submit-btn">
                      <div class="input-data">
@@ -38,4 +116,3 @@
          </form>
       </div>
    </div>
- 

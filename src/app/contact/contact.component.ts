@@ -14,17 +14,28 @@ export class ContactComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // onSubmit(form: NgForm) {
+  //   const value = form.value;
+  //   console.log(value)
+
+  //   this.http.post('https://techlead-e4ee9-default-rtdb.firebaseio.com/comments.json',
+  //    value
+  //   ).subscribe(response => {
+  //     console.log(response);
+  //     form.reset();
+  //   })
+
+  // }
+
   onSubmit(form: NgForm) {
     const value = form.value;
-    console.log(value)
-
-    this.http.post('https://techlead-e4ee9-default-rtdb.firebaseio.com/comments.json',
-     value
-    ).subscribe(response => {
-      console.log(response);
-      form.reset();
-    })
-
+    this.http.post('https://techlead-e4ee9-default-rtdb.firebaseio.com/reviews/headphones.json',
+    value).subscribe(
+      (response) => {
+        console.log(response);
+        form.reset()
+      }
+    )
   }
 
 }

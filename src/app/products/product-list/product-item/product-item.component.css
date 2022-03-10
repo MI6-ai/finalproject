@@ -13,3 +13,9 @@
     -ms-transform: scale(1.2);
     transform: scale(1.2);
 }
+
+.card-img-top {
+    width: 100%;
+    height: 25vw;
+    object-fit: cover;
+}
