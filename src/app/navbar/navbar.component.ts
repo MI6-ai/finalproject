@@ -112,7 +112,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   onLogin(loginform: NgForm) {
     this.isLoading = true;
-
+  
     const email = loginform.value.email;
     const password = loginform.value.password;
     let confirmPassword = null;
@@ -129,36 +129,36 @@ export class NavbarComponent implements OnInit, OnDestroy {
      }
     }
 
-    if(this.isAdmin){
+    // if(this.isAdmin){
       
-      this.authService.admin()
-      .pipe(map(resData => {
-        const adminArray = [];
-        for (const key in resData) {
-          if(resData.hasOwnProperty(key)) {          
-            adminArray.push({...resData[key], id: key})
-          }
-        }
-        return adminArray;
-      }))
-      .subscribe(
-        (result) => {
-          for (let res in result) {
-            this.adminEmails.push(result[res].email);
-          }
-          console.log(this.adminEmails);
-          if(this.adminEmails.includes(email)){
-            this.authService.isAdmin = true;
-          }
-          else{
-            this.error = "You are not an Admin! Logging in as a User."; 
-            alert(this.error)
-            this.isLoading = false;
-            loginform.reset();
-            setTimeout(() => this.error="",3000);
-          }
-        }
-      )
+      // this.authService.admin()
+      // .pipe(map(resData => {
+      //   const adminArray = [];
+      //   for (const key in resData) {
+      //     if(resData.hasOwnProperty(key)) {          
+      //       adminArray.push({...resData[key], id: key})
+      //     }
+      //   }
+      //   return adminArray;
+      // }))
+      // .subscribe(
+      //   (result) => {
+      //     for (let res in result) {
+      //       this.adminEmails.push(result[res].email);
+      //     }
+      //     console.log(this.adminEmails);
+      //     if(this.adminEmails.includes(email)){
+      //       this.authService.isAdmin = true;
+      //     }
+      //     else{
+      //       this.error = "You are not an Admin! Logging in as a User."; 
+      //       alert(this.error)
+      //       this.isLoading = false;
+      //       loginform.reset();
+      //       setTimeout(() => this.error="",3000);
+      //     }
+      //   }
+      // )
 
     let AuthObs: Observable<AuthResponseData>
 
@@ -196,9 +196,55 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   }
 
- }
+ onAdminLogin(form: NgForm) {
+  this.isLoading = true;
+  
+  const email = form.value.email;
+  const password = form.value.password;
 
-    
+  this.authService.admin()
+      .pipe(map(resData => {
+        const adminArray = [];
+        for (const key in resData) {
+          if(resData.hasOwnProperty(key)) {          
+            adminArray.push({...resData[key], id: key})
+          }
+        }
+        return adminArray;
+      }))
+      .subscribe(
+        (result) => {
+          for (let res in result) {
+            this.adminEmails.push(result[res].email);
+          }
+          console.log(this.adminEmails);
+          if(this.adminEmails.includes(email)){
+            this.authService.isAdmin = true;
+          } 
+
+          this.authService.login(email,password).subscribe({
+            next: (resData) => {
+              console.log(resData);
+              this.isLoading = false;
+              
+              const body: any = document.querySelector("body");
+              const modal: any = document.querySelector(".modal");
+              modal.classList.remove("is-open");
+              body.style.overflow = "initial";
+              this.router.navigate(['/'])
+            },
+            error: (eMsg) => {
+              console.log(eMsg);
+              this.error = eMsg;
+              this.isLoading= false;
+            }
+          })
+          this.adminEmails = [];
+        }      
+      )
+      form.reset();
+
+ }
 
   onLogout() {
     this.modalButton.addEventListener("click", () => {
