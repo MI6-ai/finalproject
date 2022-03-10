@@ -6,6 +6,7 @@ import { GuideComponent } from './guide/guide.component';
 import { HomeComponent } from './home/home.component';
 import { ShopComponent } from './shop/shop.component';
 import { AuthGuard } from './services/auth.guard';
+import { ProductSpecsComponent } from './products/product-detail/product-specs/product-specs.component';
 
 const appRoutes : Routes = [
   { path: '', component: HomeComponent },
@@ -18,7 +19,8 @@ const appRoutes : Routes = [
   { path: 'guide', component: GuideComponent, canActivate: [AuthGuard]},
   { path: 'about', component: AboutComponent},
   { path: 'contact', component: ContactComponent},
-  { path: 'shop', component: ShopComponent }
+  { path: 'shop', component: ShopComponent },
+  { path: 'specs', component: ProductSpecsComponent}
 ];
 
 @NgModule({

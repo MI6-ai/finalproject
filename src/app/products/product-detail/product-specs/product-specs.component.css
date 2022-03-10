@@ -1,0 +1,25 @@
+.specs-container{
+    display: flex;
+    margin: auto;
+    box-shadow: 5px;
+    margin-left: 50px;
+    margin-right: 50px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    width: 500px;
+}
+.specscon{
+    display: grid;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 50px;
+    float: right;
+    border: 5px solid grey;
+    border-radius: 20px;
+}
+.name {
+    font-weight: 650;
+    color: #55311c
+}
+
