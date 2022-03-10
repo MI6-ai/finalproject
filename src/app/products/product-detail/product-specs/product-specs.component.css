@@ -2,19 +2,21 @@
     display: flex;
     margin: auto;
     box-shadow: 5px;
-    margin-left: 50px;
-    margin-right: 50px;
     background-color: rgb(255, 255, 255);
     border-radius: 20px;
-    width: 500px;
 }
+
+.specsHead {
+    width: 400px;
+    
+    margin-left: 100px;
+    margin-right: 300px;
+}
+
 .specscon{
-    display: grid;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 20px;
     padding-left: 20px;
-    padding-right: 50px;
-    float: right;
+    padding-right: 20px;
     border: 5px solid grey;
     border-radius: 20px;
 }
@@ -22,4 +24,10 @@
     font-weight: 650;
     color: #55311c
 }
+
+.col-md-4 {
+    text-align: center;
+}
+
+
 
