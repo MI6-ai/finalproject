@@ -1,7 +1,7 @@
 <br><br><br>
 <div class="col-sm-8">
-   <span *ngFor="let heading of topHeadingDisplay; let i = index">
-      <a style="cursor: pointer;" *ngIf="heading.title" [routerLink]="['news', heading._id]">
+   <div *ngFor="let heading of topHeadingDisplay; let i = index">
+      <div style="cursor: pointer;" *ngIf="heading.title" [routerLink]="['news', heading._id]">
          <div class="card">
             <div class="row">
                <div class="fill col-sm-3">
@@ -15,8 +15,8 @@
             </div>
          </div>
          <br>
-      </a>
-   </span>
+      </div>
+   </div>
    
 </div>
 

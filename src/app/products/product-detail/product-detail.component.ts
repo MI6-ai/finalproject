@@ -22,6 +22,7 @@ export class ProductDetailComponent implements OnInit {
   };
   index: number = 0;
   productString: string ='';
+  productName: string = '';
 
   constructor(private productService: ProductDataService,
     private route: ActivatedRoute,
@@ -58,7 +59,6 @@ export class ProductDetailComponent implements OnInit {
           }    
         }
       );
-
   }
-
+  
 }

@@ -2,7 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden
+    overflow: hidden;
+    max-height: 10rem;
 }
 .fill img {
     flex-shrink: 0;

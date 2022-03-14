@@ -1,5 +1,5 @@
 <div class="container">
-    <h1 class="name list-group-item-heading">{{ product.name }}</h1>
+    <h1 class="productName" class="name list-group-item-heading">{{ product.name }}</h1>
 
     <h5 class="list-group-item-text">Priced at:  ${{ product.price }}</h5>
     <br>
@@ -13,6 +13,7 @@
       <h5 class="list-group-item-text">{{ product.description }}</h5><br>
       <p class="list-group-item-text" style="text-align: justify;">{{ product.review }}</p>
     </div>
-    <button>View Specs</button>
+    <button [routerLink]="['specs']">View Specs</button>
   </div>
 
+  
