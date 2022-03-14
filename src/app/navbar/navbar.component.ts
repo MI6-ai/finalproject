@@ -97,9 +97,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
     
   }
 
-  SearchF(form: any) {
-    this.searchQuery = form.searchBar;
+  SearchF(form: NgForm) {
+    this.searchQuery = form.value.searchBar;
     this.NewsApiService.searchquery = this.searchQuery;
+    form.reset();
   }
 
   goToBottom(){

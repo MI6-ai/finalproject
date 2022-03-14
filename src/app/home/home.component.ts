@@ -24,11 +24,16 @@ export class HomeComponent implements OnInit, OnDestroy{
           this.service.NewsApiUrl = this.service.dummyUrl.concat(result['search']);
           console.log(this.service.NewsApiUrl)
         }
+        else
+        {
+          this.service.NewsApiUrl = 'https://free-news.p.rapidapi.com/v1/search?lang=en&q=any';
+        }
     this.service.topHeading()
      .subscribe(
        (result) => {
          console.log(result);
          this.topHeadingDisplay = result.articles;
+         console.log(this.topHeadingDisplay);
          this.service.NewsApiUrl = this.service.dummyUrl;
        } )
       }
@@ -36,6 +41,7 @@ export class HomeComponent implements OnInit, OnDestroy{
   }
 
   ngOnDestroy(): void {
+    this.service.NewsApiUrl = 'https://free-news.p.rapidapi.com/v1/search?lang=en&q=any';
       this.newsSubscription.unsubscribe();
   }
 }

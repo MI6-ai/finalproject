@@ -1,16 +1,16 @@
 <br><br><br>
 <div class="col-sm-8">
-   <span *ngFor="let heading of topHeadingDisplay">
-      <a style="cursor: pointer;" *ngIf="heading.urlToImage && heading.title">
+   <span *ngFor="let heading of topHeadingDisplay; let i = index">
+      <a style="cursor: pointer;" *ngIf="heading.title" [routerLink]="['news', heading._id]">
          <div class="card">
             <div class="row">
                <div class="fill col-sm-3">
-                  <img src="{{heading.urlToImage}}" class="card-img-top" alt="image">
+                  <img src="{{heading.media}}" class="card-img-top" alt="image">
                </div>
                <div class="col-sm-9">
-                  <h5 class="heading">{{ heading.title }}</h5>
-                  <p class="date">{{heading.publishedAt | date }}</p>
-                  <p class="desc">{{ heading.description | slice:0:150 }}...</p>
+                  <h5 class="heading">{{ heading.title | slice:0:60}}<span *ngIf="heading.title.length>60">...</span></h5>
+                  <p class="date">{{heading.published_date | date }}</p>
+                  <p class="desc">{{ heading.summary | slice:0:150 }}...</p>
                </div>
             </div>
          </div>
