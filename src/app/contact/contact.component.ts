@@ -27,15 +27,5 @@ export class ContactComponent implements OnInit {
 
   }
 
-  // onSubmit(form: NgForm) {
-  //   const value = form.value;
-  //   this.http.post('https://techlead-e4ee9-default-rtdb.firebaseio.com/reviews/entertainment.json',
-  //   value).subscribe(
-  //     (response) => {
-  //       console.log(response);
-  //       form.reset()
-  //     }
-  //   )
-  // }
-
+  
 }

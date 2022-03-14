@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ProductDataService } from 'src/app/services/product-data.service';
 import { Product } from '../product.model';
@@ -9,7 +10,7 @@ import { Product } from '../product.model';
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css']
 })
-export class ProductDetailComponent implements OnInit {
+export class ProductDetailComponent implements OnInit, OnDestroy {
   product: Product = {
     name: '',
     rating: 0,
@@ -23,6 +24,7 @@ export class ProductDetailComponent implements OnInit {
   index: number = 0;
   productString: string ='';
   productName: string = '';
+  Subscription = new Subscription;
 
   constructor(private productService: ProductDataService,
     private route: ActivatedRoute,
@@ -30,7 +32,7 @@ export class ProductDetailComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.route.params
+    this.Subscription = this.route.params
       .subscribe(
         (params: Params) => {
           this.productString = params['product'];
@@ -59,6 +61,10 @@ export class ProductDetailComponent implements OnInit {
           }    
         }
       );
+  }
+
+  ngOnDestroy(): void {
+      this.Subscription.unsubscribe();
   }
   
 }

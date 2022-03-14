@@ -1,10 +1,11 @@
 <div class="specs-container">
     <div class="specsHead">
-		<h3 class="name">{{productName}}</h3>
-    <img src="assets/img/m1mac.png" class="lapimg">
+		<h3 class="name">{{productName}}<span class="ava">Available in Colors:- <span class="colors">{{generalSpecs['Color(s)']}}</span></span></h3>
+
+    <img src="{{productImage}}" class="image">
 	</div>
 	
-	<div class="specscon">
+	<div class="specscon" *ngIf="hardwareSpecs">
 		
 		<div class="row">
 			<div class="col-md-4">
@@ -53,7 +54,7 @@
 	<g>
 	</g>
 	            </svg>
-		       <h6>Display size</h6> <p>13.30-inch</p>
+		       <h6>Display size</h6> <p>{{ displaySpecs.Diagonal}}</p>
 			</div>  
 		<div class="col-md-4">
 			<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 315 315" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 315 315" style="width: 25px;">
@@ -62,7 +63,7 @@
 				  <path d="m276.114,40.813h-237.228c-3.866,0-7,3.134-7,7v139.022c0,3.866 3.134,7 7,7h237.229c3.866,0 7-3.134 7-7v-139.022c-0.001-3.866-3.135-7-7.001-7zm-7,139.022h-223.228v-125.022h223.229v125.022z"/>
 				</g>
 			  </svg>
-			<i class="fa-thin fa-tv"></i><h6>Display resolution</h6> <p>2560x1600 pixels</p>
+			<i class="fa-thin fa-tv"></i><h6>Display resolution</h6> <p>{{ displaySpecs['Resolution (H x W)'] }} pixels</p>
 		</div>
 		<div class="col-md-4">
 			<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -133,17 +134,14 @@
 	</g>
 	<g>
 	</g>
-	        </svg><h6>RAM</h6> <p>8GB</p>
+	        </svg><h6>RAM</h6> <p>{{ hardwareSpecs.RAM.Capacity }}</p>
 		</div>
-		  
-		
 	<!-- 
 	
 	 -->
 		</div>
 
 		<br>
-
 	<div class="row">
 		<div class="col-md-4">
 			<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -189,7 +187,7 @@
     <g>
     </g>
             </svg>
-        <i class="fa-thin fa-microchip"></i><h6>Processor</h6> <p>M1 Chip</p>
+        <i class="fa-thin fa-microchip"></i><h6>Processor</h6> <p>{{hardwareSpecs.Processor.CPU}}</p>
 		</div>
 		<div class="col-md-4">
 			<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -232,7 +230,7 @@
 <g>
 </g>
             </svg>
-          <h6>Storage</h6> <p>512GB</p>
+          <h6>Storage</h6> <p>{{hardwareSpecs.Storage.Capacity}}</p>
 		</div>
 		<div class="col-md-4">
 			<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -250,7 +248,7 @@
 	c2.4,8.6,6.4,15.5,10,20.3C22.4,77.6,14.5,69.7,10.6,59.8z M59.6,81.5c3.6-4.8,7.6-11.6,10-20.2c5-0.4,9-1,11.8-1.4
 	C77.5,69.7,69.6,77.6,59.6,81.5z"/>
             </svg>
-			<h6>OS</h6> <p>MacOS Catalina</p>
+			<h6>OS</h6> <p>{{hardwareSpecs.Software.OS}}</p>
 		</div>
 	</div>
 
@@ -331,7 +329,7 @@
 	<g>
 	</g>
 	        </svg>
-	        <h6>Graphics</h6> <p>Integrated Graphics Processor</p>
+	        <h6>Graphics</h6> <p>{{hardwareSpecs.Processor.GPU}}</p>
 		</div>
 		<div class="col-md-4">
 			<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -396,7 +394,7 @@
 </g>
 <g>
 </g>
-</svg> <h6>Touchscreen</h6><p>No</p> </div>
+</svg> <h6>Screen</h6><p>{{displaySpecs['Touch screen Type']}}</p> </div>
 		<div class="col-md-4">
 			<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 330 330" style="enable-background:new 0 0 330 330;" xml:space="preserve" style="width: 25px">
@@ -434,7 +432,7 @@
 </g>
 <g>
 </g>
-</svg><h6>Weight</h6><p>1.29 kg</p>
+</svg><h6>Weight</h6><p>{{generalSpecs.Weight}}</p>
 		</div>
 	</div>
 </div>

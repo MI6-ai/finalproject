@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ProductDataService } from 'src/app/services/product-data.service';
 import { Product } from '../product.model';
@@ -9,19 +10,20 @@ import { Product } from '../product.model';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent implements OnInit, OnDestroy {
   // product : string ='';
   products : Product[] = [];
 
   isSearched = false;
   searchedProducts: Product[] = [];
   searchProduct: string = '';
+  Subscription = new Subscription;
 
   constructor(private route : ActivatedRoute,
     private ProductDataService: ProductDataService) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(
+    this.Subscription= this.route.params.subscribe(
     (params: Params) => {
       this.ProductDataService.product = params['product'];
       this.ProductDataService.getProducts()
@@ -58,6 +60,10 @@ export class ProductListComponent implements OnInit {
         this.searchedProducts.push(prod);
       }
     }
+  }
+
+  ngOnDestroy(): void {
+      this.Subscription.unsubscribe();
   }
 
 }

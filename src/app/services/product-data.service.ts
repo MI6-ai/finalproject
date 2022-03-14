@@ -50,14 +50,24 @@ export class ProductDataService {
     //     return this.laptops[index-1];
     // }
 
-    getProductID() {
-        console.log(this.productName);
-        return this.http.post('https://apis.dashboard.techspecs.io/cs6vk2qrkhg626ia/api/product/search?query='+this.productName,
-        {category: 'smartphone'}, 
-        {headers: {
-            Accept: 'application/json',
-            'x-blobr-key': 'EAJIGl4C5ZQTkohu8DNlQoXCYCWGNP42',
-            'Content-Type': 'application/json'
-        }});
+    getProductId(name: string) {
+        switch(name) {
+            case 'iPhone 13': return '6186b047987cda5f88311983';
+            break;
+            case 'OnePlus 9': return '60d4422a8f19b751ae356250';
+            break; 
+        }
+        return '60d4422a8f19b751ae356250';
+    }
+
+    getProductSpecs(Id: string) {
+        return this.http.get(
+            'https://apis.dashboard.techspecs.io/cs6vk2qrkhg626ia/api/product/get/'+Id,
+            {headers: {
+                Accept: 'application/json',
+                'Accept-Encoding': 'gzip, deflate',
+                'x-blobr-key': 'EAJIGl4C5ZQTkohu8DNlQoXCYCWGNP42'
+              }} 
+        )
     }
 }

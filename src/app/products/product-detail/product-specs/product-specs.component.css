@@ -10,13 +10,15 @@
     width: 400px;
     
     margin-left: 100px;
-    margin-right: 300px;
+    margin-right: 200px;
 }
 
 .specscon{
+    margin-top: 150px;
     padding-top: 20px;
     padding-left: 20px;
     padding-right: 20px;
+    max-height: 450px;
     border: 5px solid grey;
     border-radius: 20px;
 }
@@ -27,6 +29,22 @@
 
 .col-md-4 {
     text-align: center;
+}
+
+.image {
+    max-width: 80vh;
+    max-height: 80vh;
+}
+
+.colors {
+    color: black;
+    font-size:medium;
+}
+
+.ava {
+    font-size: large;
+    display: block;
+    margin-top: 30px;
 }
 
 
