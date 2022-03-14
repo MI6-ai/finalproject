@@ -1,6 +1,6 @@
 import { Product } from "../products/product.model";
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 
 @Injectable({
@@ -13,6 +13,7 @@ export class ProductDataService {
     productItem : Product|undefined;
     product : string ='';
     products =['laptops','mobiles','headphones','gaming','wearables','entertainment'];
+    productName : string ='';
      
 
     getProducts() : Observable<any>
@@ -48,4 +49,15 @@ export class ProductDataService {
     //     }
     //     return this.laptops[index-1];
     // }
+
+    getProductID() {
+        console.log(this.productName);
+        return this.http.post('https://apis.dashboard.techspecs.io/cs6vk2qrkhg626ia/api/product/search?query='+this.productName,
+        {category: 'smartphone'}, 
+        {headers: {
+            Accept: 'application/json',
+            'x-blobr-key': 'EAJIGl4C5ZQTkohu8DNlQoXCYCWGNP42',
+            'Content-Type': 'application/json'
+        }});
+    }
 }

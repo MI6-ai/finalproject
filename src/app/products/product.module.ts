@@ -24,7 +24,8 @@ import { ProductSpecsComponent } from './product-detail/product-specs/product-sp
             {path: '', redirectTo: 'list', pathMatch:'full'},
             { path: 'list', component: ProductEmptyComponent},
             { path: ':product', component: ProductListComponent },
-            { path: ':product/:id', component: ProductDetailComponent }
+            { path: ':product/:id', component: ProductDetailComponent },
+            { path: ':product/:id/specs', component: ProductSpecsComponent}
          ]}
         ]),
         CommonModule,
