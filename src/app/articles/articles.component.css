@@ -66,12 +66,12 @@ height: 40vh;
 object-fit: cover;
 }
 .card-title{
-    white-space: nowrap;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .card-text{
-    white-space: nowrap;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
