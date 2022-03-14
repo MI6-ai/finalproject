@@ -8,7 +8,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
-import { GuideComponent } from './guide/guide.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 
@@ -18,19 +17,18 @@ import { FooterComponent } from './footer/footer.component';
 import { ShopComponent } from './shop/shop.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { AuthInterceptorService } from './shared/auth-interceptor.service';
-import { ArticleModule } from './articles/articles.module';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    HomeComponent,   
-    GuideComponent,
+    HomeComponent,  
     AboutComponent,
     ContactComponent,   
     FooterComponent,
     ShopComponent,   
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent, AdminComponent
     
   ],
   imports: [

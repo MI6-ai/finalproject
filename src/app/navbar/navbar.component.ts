@@ -1,19 +1,18 @@
 
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewChecked, Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { map } from 'rxjs/operators'
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { AuthResponseData, AuthService } from '../services/auth.service';
 import { NewsApiServiceService } from '../services/news-api-service.service';
-import { User } from '../shared/user.model';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit, OnDestroy {
+export class NavbarComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   password: string | null= null;
   isView = true;
@@ -23,7 +22,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   isForget = false;
   reset: string ='';
   isAdmin = false;
-  admins : any;
+  isAdminConfirmed = false;
   adminEmails : string[] = [];
 
 
@@ -196,7 +195,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
             next: (resData) => {
               console.log(resData);
               this.isLoading = false;
-              
+
               const body: any = document.querySelector("body");
               const modal: any = document.querySelector(".modal");
               modal.classList.remove("is-open");
@@ -210,10 +209,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
             }
           })
           this.adminEmails = [];
-        }      
+        },   
       )
       form.reset();
-
  }
 
   onLogout() {
@@ -223,6 +221,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     });
     this.authService.logout();
     this.authService.isAdmin = false;
+    this.isAdminConfirmed = false;
   }
 
   forgetPassword(loginform: NgForm) {
@@ -242,6 +241,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
     });
     
     setTimeout(() => this.error="",3500)
+  }
+
+  ngAfterViewChecked(): void {
+      console.log(this.authService.user.value.isAdmin);
+    this.isAdminConfirmed = this.authService.user.value.isAdmin;
   }
 
   ngOnDestroy(): void {
