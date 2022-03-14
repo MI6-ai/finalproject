@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -17,7 +17,6 @@ import { FooterComponent } from './footer/footer.component';
 import { ShopComponent } from './shop/shop.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { AuthInterceptorService } from './shared/auth-interceptor.service';
-import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +27,7 @@ import { AdminComponent } from './admin/admin.component';
     ContactComponent,   
     FooterComponent,
     ShopComponent,   
-    LoadingSpinnerComponent, AdminComponent
-    
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,

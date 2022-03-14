@@ -222,6 +222,7 @@ export class NavbarComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.authService.logout();
     this.authService.isAdmin = false;
     this.isAdminConfirmed = false;
+    this.router.navigate(['/']);
   }
 
   forgetPassword(loginform: NgForm) {
@@ -244,7 +245,6 @@ export class NavbarComponent implements OnInit, OnDestroy, AfterViewChecked {
   }
 
   ngAfterViewChecked(): void {
-      console.log(this.authService.user.value.isAdmin);
     this.isAdminConfirmed = this.authService.user.value.isAdmin;
   }
 

@@ -4,9 +4,7 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
 import { ShopComponent } from './shop/shop.component';
-import { AuthGuard } from './services/auth.guard';
 import { ProductSpecsComponent } from './products/product-detail/product-specs/product-specs.component';
-import { AdminComponent } from './admin/admin.component';
 
 const appRoutes : Routes = [
   { path: '', component: HomeComponent },
@@ -16,7 +14,9 @@ const appRoutes : Routes = [
   {
     path: 'articles', loadChildren: () => import('./articles/articles.module').then(m => m.ArticleModule)
   },
-  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
+  { 
+    path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+  },
   { path: 'about', component: AboutComponent},
   { path: 'contact', component: ContactComponent},
   { path: 'shop', component: ShopComponent },

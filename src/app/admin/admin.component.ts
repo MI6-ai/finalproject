@@ -8,10 +8,9 @@ import { AuthService } from '../services/auth.service';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    console.log(this.authService.user.value.isAdmin)
   }
 
 }
