@@ -19,4 +19,8 @@ export class AdminService {
   getComment(id: string) {
     return this.http.get('https://techlead-e4ee9-default-rtdb.firebaseio.com/comments/'+id+'.json');
   }
+
+  getArticles() {
+    return this.http.get('https://techlead-e4ee9-default-rtdb.firebaseio.com/articles.json')
+  }
 }

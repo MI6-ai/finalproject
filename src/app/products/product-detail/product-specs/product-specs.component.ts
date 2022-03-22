@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { waitForAsync } from '@angular/core/testing';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, Subscription } from 'rxjs';
+import { first, map, switchMap } from 'rxjs/operators';
 import { ProductDataService } from 'src/app/services/product-data.service';
 
 @Component({
@@ -16,17 +17,23 @@ export class ProductSpecsComponent implements OnInit, OnDestroy {
   Subscription = new Subscription;
   productString: string ='';
   index: number = 0;
+  one = new Observable;
+  two = new Observable;
   
   productName: string = '';
-  productId: string |undefined;
+  productId: string ='';
   productImage: string | undefined;
 
   generalSpecs: any;
   hardwareSpecs : any;
   displaySpecs: any;
+
+  
   
   ngOnInit(): void {
 
+
+  
     this.Subscription = this.route.params
       .subscribe(
         (params: Params) => {
@@ -50,19 +57,34 @@ export class ProductSpecsComponent implements OnInit, OnDestroy {
                 console.log(resData);
                 this.productName = resData[this.index-1].name;
                 this.productImage = resData[this.index-1].image;
-                this.productId = this.productService.getProductId(this.productName);
-
-                this.productService.getProductSpecs(this.productId)
-                .pipe(map((resData: any) => {
-                   const ProdArray: any = [];
-                   let specsArray: any;
-                   const abcd: any = [];
-                  for (const key in resData.data) {
-                    if(resData.data.hasOwnProperty(key)) {          
-                      ProdArray.push({...resData.data[key][0]})
+                this.one = this.productService.getProductId(this.productName)
+                this.one
+                .pipe(map((res: any) => {
+                  const ProdArray: any = [];
+                  for (const key in res) {
+                    if(res.hasOwnProperty(key)) {          
+                      ProdArray.push({...res[key], id: key})
                     }
                   }
-                  specsArray = ProdArray[0];
+                  return ProdArray;
+                }))
+                .subscribe(
+                  (res) => {
+                    this.productId = res[3].results[0]._meta.id;
+                    
+                    this.two =  this.productService.getProductSpecs(this.productId);
+                
+                    this.two.pipe(this.productService.waitFor(this.one),map((resData: any) => {
+                  
+                    const ProdArray: any = [];
+                    let specsArray: any;
+                    const abcd: any = [];
+                    for (const key in resData.data) {
+                      if(resData.data.hasOwnProperty(key)) {          
+                      ProdArray.push({...resData.data[key][0]})
+                      }
+                    }
+                     specsArray = ProdArray[0];
                   for (const key in specsArray) {
                     if(specsArray.hasOwnProperty(key)) {          
                       abcd.push({...specsArray[key]})
@@ -79,10 +101,9 @@ export class ProductSpecsComponent implements OnInit, OnDestroy {
                     this.displaySpecs = resData[2];
                     
                     this.hardwareSpecs = resData[3];
-                   
-                  }
-                )
+                  })
 
+                  })
               }
             )
           }    

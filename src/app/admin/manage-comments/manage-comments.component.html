@@ -1,6 +1,6 @@
-<div *ngFor="let comment of comments">
+<div *ngFor="let comment of comments, let i=index">
     <h1>{{ comment.Name }}</h1>
     <p>{{ comment.emailaddress }}</p>
     <p>{{ comment.msg }}</p>
-    <button (click)="deleteComment(comment.id)">Delete</button>
+    <button (click)="deleteComment(comment.id, i)">Delete</button>
 </div>

@@ -1,8 +1,8 @@
 import { Product } from "../products/product.model";
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
-
+import { first ,switchMap } from "rxjs/operators"
 @Injectable({
     providedIn: 'root'
   })
@@ -15,6 +15,12 @@ export class ProductDataService {
     products =['laptops','mobiles','headphones','gaming','wearables','entertainment'];
     productName : string ='';
      
+    waitFor<T>(signal: Observable<any>) {
+        return (source: Observable<T>) => signal.pipe(
+            first(),
+            switchMap(_ => source),
+        );
+    }
 
     getProducts() : Observable<any>
     {      
@@ -36,28 +42,18 @@ export class ProductDataService {
         return this.http.get('https://techlead-e4ee9-default-rtdb.firebaseio.com/reviews.json')
     }
 
-    // getProduct(index: number)
-    // {
-
-    //     switch(this.product) {
-    //         case 'laptops': return this.laptops[index-1];
-    //         break;
-    //         case 'mobiles': return this.mobiles[index-1];
-    //         break;
-    //         case 'headphones': return this.headphones[index-1];
-    //         break;
-    //     }
-    //     return this.laptops[index-1];
-    // }
 
     getProductId(name: string) {
-        switch(name) {
-            case 'iPhone 13': return '6186b047987cda5f88311983';
-            break;
-            case 'OnePlus 9': return '60d4422a8f19b751ae356250';
-            break; 
-        }
-        return '60d4422a8f19b751ae356250';
+        return this.http.post(
+            'https://apis.dashboard.techspecs.io/cs6vk2qrkhg626ia/api/product/search?query='+name,
+            JSON.stringify({category: 'all'}),
+            {headers: {
+             Accept: 'application/json',
+             'x-blobr-key': 'EAJIGl4C5ZQTkohu8DNlQoXCYCWGNP42',
+             'Content-Type': 'application/json'
+           }});
+
+      
     }
 
     getProductSpecs(Id: string) {
