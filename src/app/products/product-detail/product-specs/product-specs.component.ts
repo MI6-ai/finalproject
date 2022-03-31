@@ -31,8 +31,6 @@ export class ProductSpecsComponent implements OnInit, OnDestroy {
   
   
   ngOnInit(): void {
-
-
   
     this.Subscription = this.route.params
       .subscribe(

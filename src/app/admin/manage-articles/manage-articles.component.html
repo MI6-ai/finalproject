@@ -1,4 +1,73 @@
-<div *ngFor="let article of articles">
-    <h4>{{article.name}}</h4>
-    <br> <br>
+<br><div>
+    <button (click)="toggleAdd()"><a class="nav-link list1" [routerLink]="['add']">{{ !isAdding ? 'Add Article' : 'Go Back!' }}</a></button>
 </div>
+<br><br>
+<div *ngIf="!isAdding">
+    <div *ngFor="let article of articles, let i = index">
+        <h4>{{article.name}}</h4>
+        <br>
+        <button (click)="deleteArticle(article.id, i)">Delete</button>
+        <br> <br>
+    </div>
+</div>
+
+<div *ngIf="isAdding">
+
+    <div class="container-fluid title-bar">
+        <h3>Add an Article</h3>
+    </div>
+     <div class="new-body">
+        <div class="container">
+           <form (ngSubmit)="onAddArticle(addForm)" #addForm="ngForm">
+              <div class="form-row">
+                 <div class="input-data">
+                    <input ngModel name="name" type="text" required>
+                    <div class="underline"></div>
+                    <label for="">Name</label>
+                 </div>
+              </div>
+              
+              
+              <div class="form-row">
+                 <div class="input-data">
+                    <input ngModel name="publisher" type="text" required>
+                    <div class="underline"></div>
+                    <label for="">publisher</label>
+                 </div>
+              </div>
+              
+              <div class="form-row">
+                 <div class="input-data">
+                    <input ngModel name="image" type="text" required>
+                    <div class="underline"></div>
+                    <label for="">image</label>
+                 </div>
+              </div>
+              <div class="form-row">
+                 <div class="input-data">
+                    <input ngModel name="description" type="text" required>
+                    <div class="underline"></div>
+                    <label for="description">description</label>
+                 </div>
+              </div>
+              <div class="form-row">
+                 <div class="input-data textarea">
+                    <textarea ngModel name="essay" rows="8" cols="80" required></textarea>
+                    <br />
+                    <div class="underline"></div>
+                    <label for="msg">Write your Essay</label>
+                    <br />
+                    <div class="form-row submit-btn">
+                       <div class="input-data">
+                          <div class="inner"></div>
+                          <input type="submit" value="submit">
+                       </div>
+                    </div>
+                 </div>
+              </div>
+           </form>
+        </div>
+     </div>
+
+</div>
+

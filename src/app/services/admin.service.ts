@@ -23,4 +23,17 @@ export class AdminService {
   getArticles() {
     return this.http.get('https://techlead-e4ee9-default-rtdb.firebaseio.com/articles.json')
   }
+
+  addArticle(value: {}) {
+     return this.http.post('https://techlead-e4ee9-default-rtdb.firebaseio.com/articles.json',value);
+  }
+
+  deleteArticle(id: string) {
+    return this.http.delete('https://techlead-e4ee9-default-rtdb.firebaseio.com/articles/'+id+'.json');
+  } 
+
+  getReviews() {
+    return this.http.get('https://techlead-e4ee9-default-rtdb.firebaseio.com/reviews.json')
+  }
+  
 }

@@ -4,6 +4,7 @@ export class Article {
     public description: string;
     public image: string;
     public essay: string;
+    public id?: string;
 
     constructor(name: string,
       publisher: string,

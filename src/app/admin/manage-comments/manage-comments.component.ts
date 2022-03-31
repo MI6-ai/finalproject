@@ -47,19 +47,12 @@ export class ManageCommentsComponent implements OnInit, OnDestroy {
   
   deleteComment(id: string, index: number) {
     
-    this.adminService.getComment(id).subscribe(
-      (data) => {
-        console.log(data);
-        this.adminService.deleteComments(id).subscribe(
-          (res) => {      
-          console.log(res); 
-          this.comments.splice(index, 1)
-          this.commentsChanged.next(this.comments);
-          }
-        )
-      }
-    ) 
-    
+    this.adminService.deleteComments(id).subscribe(
+      (res) => {      
+      console.log(res); 
+      this.comments.splice(index, 1)
+      this.commentsChanged.next(this.comments);
+      })
   }
 
   ngOnDestroy(): void {
