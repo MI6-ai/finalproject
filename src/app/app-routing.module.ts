@@ -22,7 +22,7 @@ const appRoutes : Routes = [
   { path: 'shop', component: ShopComponent },
   { path: 'specs', component: ProductSpecsComponent},
   {
-    path: 'news/:id' , component: AboutComponent
+    path: 'news/:id' , component: HomeComponent
   }
 ];
 

@@ -245,7 +245,11 @@ export class NavbarComponent implements OnInit, OnDestroy, AfterViewChecked {
   }
 
   ngAfterViewChecked(): void {
-    this.isAdminConfirmed = this.authService.user.value.isAdmin;
+    if(this.authService.user.value)
+    {
+      this.isAdminConfirmed = this.authService.user.value.isAdmin;
+    }
+    
   }
 
   ngOnDestroy(): void {

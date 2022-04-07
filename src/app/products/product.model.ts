@@ -7,6 +7,7 @@ export class Product {
     public dateOfPublish: Date;
     public image: string;
     public price: number;
+    public category: string;
 
     constructor(name: string,
           rating: number,
@@ -15,7 +16,8 @@ export class Product {
           review: string,
           publisher: string,
           dateOfPublish: Date,
-          image: string) 
+          image: string, 
+          category: string) 
      {
 
         this.name = name;
@@ -25,7 +27,8 @@ export class Product {
         this.review = review;
         this.publisher = publisher;
         this.dateOfPublish = dateOfPublish;
-        this.image = image
+        this.image = image;
+        this.category = category;
 
      }
 }

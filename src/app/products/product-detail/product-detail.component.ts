@@ -19,7 +19,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     review: '',
     dateOfPublish: new Date(),
     image: '',
-    publisher: ''
+    publisher: '',
+    category: ''
   };
   index: number = 0;
   productString: string ='';

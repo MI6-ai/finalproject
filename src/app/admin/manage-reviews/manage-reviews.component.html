@@ -1,6 +1,19 @@
-<div *ngFor="let review of reviews">
+<!-- <div *ngFor="let review of reviews">
     <h4>{{ review.name }}</h4>
     <br>
     <button>Delete</button>
     <br> <br>
+
+    <div *ngIf="categories.includes(review.category)">
+        <h3>{{categories.indexOf(review.category) + 1}}</h3>
+    </div>
+</div> -->
+
+<div *ngFor="let category of categories">
+    <h3>{{ category | uppercase}}</h3>
+    <div *ngFor="let review of reviews">
+        <div *ngIf="category == review.category">
+            <h5>{{review.name}}</h5>
+        </div>
+    </div>
 </div>

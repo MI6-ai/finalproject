@@ -45,7 +45,7 @@ export class ProductDataService {
 
     getProductId(name: string) {
         return this.http.post(
-            'https://apis.dashboard.techspecs.io/cs6vk2qrkhg626ia/api/product/search?query='+name,
+            'https://apis.dashboard.techspecs.io/e2t2fcqhn624qcjz/api/product/search?query='+name,
             JSON.stringify({category: 'all'}),
             {headers: {
              Accept: 'application/json',
@@ -58,7 +58,7 @@ export class ProductDataService {
 
     getProductSpecs(Id: string) {
         return this.http.get(
-            'https://apis.dashboard.techspecs.io/cs6vk2qrkhg626ia/api/product/get/'+Id,
+            'https://apis.dashboard.techspecs.io/e2t2fcqhn624qcjz/api/product/get/'+Id,
             {headers: {
                 Accept: 'application/json',
                 'Accept-Encoding': 'gzip, deflate',

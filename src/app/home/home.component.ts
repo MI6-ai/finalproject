@@ -1,5 +1,6 @@
 import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
+import { param } from 'jquery';
 import { Subscription } from 'rxjs';
 import { NewsApiServiceService } from "../services/news-api-service.service"
 
@@ -11,9 +12,12 @@ import { NewsApiServiceService } from "../services/news-api-service.service"
 export class HomeComponent implements OnInit, OnDestroy{
 
   constructor(private service: NewsApiServiceService, private route: ActivatedRoute) { }
+  
   newsSubscription: Subscription = new Subscription();
+  detailSubscription: Subscription = new Subscription();
 
   topHeadingDisplay: any = [];
+  newsId: string = '';
 
   ngOnInit(): void {
     this.newsSubscription = this.route.queryParams
@@ -38,10 +42,20 @@ export class HomeComponent implements OnInit, OnDestroy{
        } )
       }
     );
+
+    this.detailSubscription = this.route.params.subscribe(
+      (params: Params) => {
+        if(params['id'])
+        {
+          this.newsId = params['id'];
+        }
+      }
+    )
   }
 
   ngOnDestroy(): void {
     this.service.NewsApiUrl = 'https://free-news.p.rapidapi.com/v1/search?lang=en&q=any';
       this.newsSubscription.unsubscribe();
+      this.detailSubscription.unsubscribe();
   }
 }

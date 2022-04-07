@@ -13,6 +13,7 @@ export class ManageReviewsComponent implements OnInit {
   constructor(private adminService: AdminService) { }
 
   reviews: Product[] = [];
+  categories = ['laptops','mobiles','entertainment','gaming','headphones','wearables'];
 
   ngOnInit(): void {
 
@@ -43,6 +44,11 @@ export class ManageReviewsComponent implements OnInit {
         this.reviews = res;
       }
     )
+
+
+    for(let category of this.categories) {
+
+    }
   }
 
 }

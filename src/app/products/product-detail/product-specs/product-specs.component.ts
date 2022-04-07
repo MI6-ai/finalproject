@@ -94,11 +94,12 @@ export class ProductSpecsComponent implements OnInit, OnDestroy {
                 .subscribe(
                   (resData) => {
                     console.log(resData);
-                    this.generalSpecs = resData[1];
-                    
-                    this.displaySpecs = resData[2];
-                    
-                    this.hardwareSpecs = resData[3];
+                    this.generalSpecs = resData[2];
+                    console.log(this.generalSpecs);
+                    this.displaySpecs = resData[3];
+                    console.log(this.displaySpecs);
+                    this.hardwareSpecs = resData[4];
+                    console.log(this.hardwareSpecs);
                   })
 
                   })
