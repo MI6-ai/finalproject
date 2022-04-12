@@ -1,6 +1,7 @@
 
 <div *ngFor="let category of categories">
-    <h3>{{ category | uppercase}}</h3>
+    
+    <h3 class="categoryhead">{{ category | uppercase}}</h3>
     <div *ngFor="let review of reviews">
         <div *ngIf="category == review.category">
 
@@ -38,4 +39,5 @@
          </div>
          
        </div>
+       <br><br><br>
 </div>
