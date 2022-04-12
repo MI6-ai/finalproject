@@ -6,7 +6,7 @@ import { AdminService } from 'src/app/services/admin.service';
 @Component({
   selector: 'app-manage-reviews',
   templateUrl: './manage-reviews.component.html',
-  styleUrls: ['./manage-reviews.component.css']
+  styleUrls: ['./manage-reviews.component.scss']
 })
 export class ManageReviewsComponent implements OnInit {
 

@@ -14,33 +14,31 @@
         </div>
          <div class="new-body">
             <div class="container">
-               <form (ngSubmit)="onAddArticle(addForm)" #addForm="ngForm">
+               <form (ngSubmit)="onUpdateArticle(updateForm, article.id, i)" #updateForm="ngForm">
                   <div class="form-row">
                      <div class="input-data">
-                        <input name="name" type="text" value="{{article.name}}" required>
+                        <input ngModel="{{article.name}}" name="name" type="text" required>
                         <div class="underline"></div>
                         <label for="">Name</label>
                      </div>
-                  </div>
-                  
-                  
+                  </div>  
                   <div class="form-row">
                      <div class="input-data">
-                        <input name="publisher" type="text" value="{{article.publisher}}" required/>
+                        <input name="publisher" type="text" ngModel="{{article.publisher}}" required/>
                         <div class="underline"></div>
                         <label for="">publisher</label>
                      </div>
                   </div>
                   <div class="form-row">
                      <div class="input-data">
-                        <input name="image" value="{{article.image}}" type="text" required>
+                        <input name="image" ngModel="{{article.image}}" type="text" required>
                         <div class="underline"></div>
                         <label for="">image</label>
                      </div>
                   </div>
                   <div class="form-row">
                      <div class="input-data">
-                        <input name="description" type="text" value="{{article.description}}" required>
+                        <input name="description" type="text" ngModel="{{article.description}}" required>
                         <div class="underline"></div>
                         <label for="description">description</label>
                      </div>
@@ -49,7 +47,7 @@
                      <label class="ml-4" for="msg">Write your Essay</label>
                      <div class="input-data textarea">
                         
-                        <textarea name="essay" rows="20" cols="80" value="{{article.essay}}" required></textarea>
+                        <textarea name="essay" rows="20" cols="80" ngModel="{{article.essay}}" required></textarea>
                         <br />
                         <div class="underline"></div>
                         <br />

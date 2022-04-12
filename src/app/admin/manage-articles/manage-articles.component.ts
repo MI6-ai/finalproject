@@ -69,10 +69,19 @@ export class ManageArticlesComponent implements OnInit {
     )
   }
 
-  updateArticle(form: NgForm, id: string | undefined, index: number) {
+  onUpdateArticle(form: NgForm, id: string, i: number) {
     if(id) 
     {
-      this.adminService;
+      this.adminService.updateArticle(form.value, id).subscribe(
+        (res) => {
+          console.log(res);
+          this.articles[i] = form.value;
+          this.articlesChanged.next(this.articles);
+          form.reset();
+          this.isUpdating = '';
+          
+        }
+      )
     }
 
   }

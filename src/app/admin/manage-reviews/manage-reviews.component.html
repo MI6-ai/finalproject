@@ -1,19 +1,41 @@
-<!-- <div *ngFor="let review of reviews">
-    <h4>{{ review.name }}</h4>
-    <br>
-    <button>Delete</button>
-    <br> <br>
-
-    <div *ngIf="categories.includes(review.category)">
-        <h3>{{categories.indexOf(review.category) + 1}}</h3>
-    </div>
-</div> -->
 
 <div *ngFor="let category of categories">
     <h3>{{ category | uppercase}}</h3>
     <div *ngFor="let review of reviews">
         <div *ngIf="category == review.category">
-            <h5>{{review.name}}</h5>
-        </div>
-    </div>
+
+        <div class="cont my-5">
+            <div class="profile-card js-profile-card">
+              <br><br>
+          
+              <div class="profile-card__cnt js-profile-cnt">
+                <div class="profile-card__name">{{review.name}}</div>
+                <div class="profile-card__head">{{review.description}}</div>
+   
+                <div class="profile-card-loc">
+                  <span class="profile-card-loc__txt">
+                  by,  &nbsp;  {{review.publisher}}
+                  </span>
+                </div>
+                <br>
+                <div>
+                   <img class="img" src="{{review.image}}" alt="">
+                </div>
+                <br>
+                <div class="profile-card__txt">
+                    {{review.review}}
+                </div>
+          
+                <div class="profile-card-ctr">
+                   <button class="profile-card__button button--blue js-message-btn">Update</button>
+                   <button class="profile-card__button button--orange">Delete</button>     
+                </div>
+              </div>
+          
+            </div>
+          
+          </div>
+         </div>
+         
+       </div>
 </div>
