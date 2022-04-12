@@ -7,15 +7,28 @@
     <hr style="border: 1px solid grey;">
     <br>
     <div class="my-container">
-        <div class="row d-flex justify-content-center">
-            <div class="card col-sm-3 mx-4 review samp" *ngFor="let art of articles; let i= index">
+         <div class="row d-flex justify-content-center">
+            <div class="col-sm-3 mx-4 review samp" *ngFor="let art of articles; let i= index">
+              
               <img  class="card-img-top" src="{{ art.image }}" alt="Card image cap">
               <div class="card-body">
                 <h5 class="card-title">{{ art.name }}</h5>
                 <p class="card-text">{{art.description}}</p>
                <button class="btnnew" [routerLink]="[i+1]">Read More</button> 
               </div>
+              
             </div>
-          </div>
+        </div> 
     </div>
 </div>
+<br><br><br><br><br>
+<br><br><br><br><br>
+<br><br><br><br><br>
+<br><br><br><br><br>
+<br><br><br><br><br>
+<br><br><br><br><br>
+<br><br><br><br><br>
+<br><br><br><br><br>
+<br><br><br><br><br>
+<br><br><br><br><br>
+<br><br><br><br><br>

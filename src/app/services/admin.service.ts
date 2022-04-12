@@ -28,6 +28,10 @@ export class AdminService {
      return this.http.post('https://techlead-e4ee9-default-rtdb.firebaseio.com/articles.json',value);
   }
 
+  updateArticle(value: {},id: string) {
+    return this.http.put('https://techlead-e4ee9-default-rtdb.firebaseio.com/articles/'+id+'.json',value);
+  }
+
   deleteArticle(id: string) {
     return this.http.delete('https://techlead-e4ee9-default-rtdb.firebaseio.com/articles/'+id+'.json');
   } 

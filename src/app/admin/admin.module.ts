@@ -22,9 +22,7 @@ import { ManageReviewsComponent } from "./manage-reviews/manage-reviews.componen
             {
                 path: '', component: AdminComponent, canActivate: [AuthGuard], children: [
                    { path: 'comments/manage', component: ManageCommentsComponent },
-                   { path: 'articles/manage', component: ManageArticlesComponent, children: [
-                       {path: 'add', component: ManageArticlesComponent}
-                   ]},
+                   { path: 'articles/manage', component: ManageArticlesComponent },
                    { path: 'reviews/manage', component: ManageReviewsComponent }
                 ]
             }

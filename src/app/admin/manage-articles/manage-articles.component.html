@@ -1,17 +1,110 @@
-<br><div>
-    <button (click)="toggleAdd()"><a class="nav-link list1" [routerLink]="['add']">{{ !isAdding ? 'Add Article' : 'Go Back!' }}</a></button>
+<br><div *ngIf="isUpdating==''" style="margin-left: 8rem">
+    <button class="profile-card__button button--blue js-message-btn" (click)="toggleAdd()"><a>{{ !isAdding ? 'Add Article' : 'Go Back!' }}</a></button>
 </div>
 <br><br>
 <div *ngIf="!isAdding">
     <div *ngFor="let article of articles, let i = index">
-        <h4>{{article.name}}</h4>
-        <br>
-        <button (click)="deleteArticle(article.id, i)">Delete</button>
-        <br> <br>
+      
+      <div *ngIf="isUpdating==article.id">
+         <div>
+            <button class="profile-card__button button--blue js-message-btn" (click)="isUpdating=''"><a>Go Back!</a></button>
+         </div>
+         <div class="container-fluid title-bar">
+            <h3>Update an Article</h3>
+        </div>
+         <div class="new-body">
+            <div class="container">
+               <form (ngSubmit)="onAddArticle(addForm)" #addForm="ngForm">
+                  <div class="form-row">
+                     <div class="input-data">
+                        <input name="name" type="text" value="{{article.name}}" required>
+                        <div class="underline"></div>
+                        <label for="">Name</label>
+                     </div>
+                  </div>
+                  
+                  
+                  <div class="form-row">
+                     <div class="input-data">
+                        <input name="publisher" type="text" value="{{article.publisher}}" required/>
+                        <div class="underline"></div>
+                        <label for="">publisher</label>
+                     </div>
+                  </div>
+                  <div class="form-row">
+                     <div class="input-data">
+                        <input name="image" value="{{article.image}}" type="text" required>
+                        <div class="underline"></div>
+                        <label for="">image</label>
+                     </div>
+                  </div>
+                  <div class="form-row">
+                     <div class="input-data">
+                        <input name="description" type="text" value="{{article.description}}" required>
+                        <div class="underline"></div>
+                        <label for="description">description</label>
+                     </div>
+                  </div>
+                  <div class="form-row">
+                     <label class="ml-4" for="msg">Write your Essay</label>
+                     <div class="input-data textarea">
+                        
+                        <textarea name="essay" rows="20" cols="80" value="{{article.essay}}" required></textarea>
+                        <br />
+                        <div class="underline"></div>
+                        <br />
+                        <div class="form-row submit-btn">
+                           <div class="input-data">
+                              <div class="inner"></div>
+                              <input type="submit" value="submit">
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+
+      <div *ngIf="isUpdating==''">
+
+        <div class="mx-5 my-5">
+         <div class="profile-card js-profile-card">
+           <br><br>
+       
+           <div class="profile-card__cnt js-profile-cnt">
+             <div class="profile-card__name">{{article.name}}</div>
+             <div class="profile-card__head">{{article.description}}</div>
+
+             <div class="profile-card-loc">
+               <span class="profile-card-loc__txt">
+               by,  &nbsp;  {{article.publisher}}
+               </span>
+             </div>
+             <br>
+             <div>
+                <img class="img" src="{{article.image}}" alt="">
+             </div>
+             <br>
+             <div class="profile-card__txt">
+                 {{article.essay}}
+             </div>
+       
+             <div class="profile-card-ctr">
+                <button (click)="toggleUpdate(article.id)" class="profile-card__button button--blue js-message-btn">Update</button>
+                <button (click)="deleteArticle(article.id, i)" class="profile-card__button button--orange">Delete</button>     
+             </div>
+           </div>
+       
+         </div>
+       
+       </div>
+      </div>
+      
     </div>
 </div>
 
-<div *ngIf="isAdding">
+<div *ngIf="isAdding && isUpdating==''">
 
     <div class="container-fluid title-bar">
         <h3>Add an Article</h3>

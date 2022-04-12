@@ -8,7 +8,7 @@ import { AdminService } from 'src/app/services/admin.service';
 @Component({
   selector: 'app-manage-articles',
   templateUrl: './manage-articles.component.html',
-  styleUrls: ['./manage-articles.component.css']
+  styleUrls: ['./manage-articles.component.scss']
 })
 export class ManageArticlesComponent implements OnInit {
 
@@ -18,6 +18,7 @@ export class ManageArticlesComponent implements OnInit {
   articlesChanged = new Subject<Article[]>();
 
   isAdding = false;
+  isUpdating = '';
 
   ngOnInit(): void {
     this.articlesChanged.subscribe(
@@ -48,6 +49,13 @@ export class ManageArticlesComponent implements OnInit {
     this.isAdding = !this.isAdding;
   }
 
+  toggleUpdate(id: string | undefined) {
+    if(id)
+    {
+      this.isUpdating = id;
+    }   
+  }
+
   onAddArticle(form : NgForm) {
 
     this.adminService.addArticle(form.value).subscribe(
@@ -59,6 +67,14 @@ export class ManageArticlesComponent implements OnInit {
         this.toggleAdd();
       }
     )
+  }
+
+  updateArticle(form: NgForm, id: string | undefined, index: number) {
+    if(id) 
+    {
+      this.adminService;
+    }
+
   }
 
   deleteArticle(id: string | undefined, index: number) {
