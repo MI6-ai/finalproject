@@ -39,5 +39,17 @@ export class AdminService {
   getReviews() {
     return this.http.get('https://techlead-e4ee9-default-rtdb.firebaseio.com/reviews.json')
   }
+
+  addReview(value: {}, category: string) {
+    return this.http.post('https://techlead-e4ee9-default-rtdb.firebaseio.com/reviews/'+category+'.json', value);
+  }
+
+  deleteReview(id: string, category: string) {
+    return this.http.delete('https://techlead-e4ee9-default-rtdb.firebaseio.com/reviews/'+category+'/'+id+'.json');
+  }
+
+  updateReview(value: {}, id: string, category: string) {
+    return this.http.put('https://techlead-e4ee9-default-rtdb.firebaseio.com/reviews/'+category+'/'+id+'.json', value);
+  }
   
 }

@@ -8,16 +8,17 @@ export class Product {
     public image: string;
     public price: number;
     public category: string;
+    public key?: string;
 
     constructor(name: string,
           rating: number,
           price: number,
           description: string,
-          review: string,
           publisher: string,
           dateOfPublish: Date,
           image: string, 
-          category: string) 
+          category: string,
+          review: string) 
      {
 
         this.name = name;

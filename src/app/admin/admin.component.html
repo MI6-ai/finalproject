@@ -1,21 +1,4 @@
-<!-- <div class="navv3">
-    <nav class="navbar navbar-expand-lg mt-4 mb-4">
-    
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-        
-          
-          <li class="nav-item"><a class="nav-link list1" [routerLink]="['comments/manage']">Manage Comments</a></li>
-          <li class="nav-item"><a class="nav-link list1" [routerLink]="['articles/manage']">Manage Articles</a></li>
-          <li class="nav-item"><a class="nav-link list1" [routerLink]="['reviews/manage']">Manage Reviews</a></li>
-        </ul>
-      </div>
-    </nav>
- </div>
 
- <div>
-     <router-outlet></router-outlet>
- </div> -->
 <div class="row">
   <div class="col-sm-3">
 
@@ -118,53 +101,46 @@
             <h3>Admin</h3>
           </li>
           <li>
-            <a [routerLink]="['comments/manage']">
-              <svg>
-                <use xlink:href="#pages"></use>
-              </svg>
-              <span>Manage Comments</span>
-            </a>
-          </li>
-          <li>
             <a [routerLink]="['articles/manage']">
               <svg>
-                <use xlink:href="#users"></use>
+                <use xlink:href="#pages"></use>
               </svg>
               <span>Manage Articles</span>
             </a>
           </li>
           <li>
-            <a [routerLink]="['reviews/manage']">
+            <a href="https://console.firebase.google.com/u/0/project/techlead-e4ee9/authentication/users" target="_blank">
+              <svg>
+                <use xlink:href="#users"></use>
+              </svg>
+              <span>Manage Users</span>
+            </a>
+          </li>
+          <li>
+            <a>
               <svg>
                 <use xlink:href="#trends"></use>
+              </svg>
+              <span>View Graphs</span>
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['reviews/manage']">
+              <svg>
+                <use xlink:href="#collection"></use>
               </svg>
               <span>Manage Reviews</span>
             </a>
           </li>
           <li>
-            <a>
-              <svg>
-                <use xlink:href="#collection"></use>
-              </svg>
-              <span>Collection</span>
-            </a>
-          </li>
-          <li>
-            <a>
+            <a [routerLink]="['comments/manage']">
               <svg>
                 <use xlink:href="#comments"></use>
               </svg>
-              <span>Comments</span>
+              <span>Manage Comments</span>
             </a>
           </li>
-          <li>
-            <a href="#0">
-              <svg>
-                <use xlink:href="#appearance"></use>
-              </svg>
-              <span>Appearance</span>
-            </a>
-          </li>
+          
           <li class="menu-heading">
             <h3>Settings</h3>
           </li>

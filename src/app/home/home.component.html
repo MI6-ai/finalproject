@@ -2,11 +2,24 @@
 <div class="col-sm-8">
    <div *ngFor="let heading of topHeadingDisplay; let i = index">
       
-      <div *ngIf="newsId==heading._id">
-         <div>
-            <h3>{{heading.title}}</h3>
-            <p>{{heading.summary}}</p>
-         </div>
+      <div class="container mx-5" *ngIf="newsId==heading._id">
+         <div class="top">
+            <h1 class="name list-group-item-heading">{{ heading.title }}</h1>
+            <br>
+            <h6 *ngIf="heading.author">by: <br>{{ heading.author }}</h6>
+          </div>
+          <br>
+          <div> 
+            <img class="image img-fluid" src="{{ heading.media }}" alt="ok">
+          </div>
+          <br><br>
+          <div class="container infoDiv">
+             <p class="paragraph">"{{heading.summary}}"</p>
+          </div>
+          <br>
+          <div>
+             <p>Read more at:- <a href="{{heading.link}}" target="_blank">{{heading.link}}</a></p>
+          </div>
       </div>
 
       <div style="cursor: pointer;" *ngIf="heading.title && newsId==''" [routerLink]="['news', heading._id]">

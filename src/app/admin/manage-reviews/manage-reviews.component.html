@@ -1,10 +1,14 @@
+<br><div *ngIf="isUpdating==''">
+  <button class="profile-card__button button--blue js-message-btn" (click)="toggleAdd()"><a>{{ !isAdding ? 'Add Review' : 'Go Back!' }}</a></button>
+</div><br><br>
 
+<div *ngIf="!isAdding">
 <div *ngFor="let category of categories">
     
-    <h3 class="categoryhead">{{ category | uppercase}}</h3>
-    <div *ngFor="let review of reviews">
+    <h3 *ngIf="isUpdating==''" class="categoryhead">{{ category | uppercase}}</h3>
+    <div *ngFor="let review of reviews, let i=index">
         <div *ngIf="category == review.category">
-
+          <div *ngIf="isUpdating==''">
         <div class="cont my-5">
             <div class="profile-card js-profile-card">
               <br><br>
@@ -28,16 +32,221 @@
                 </div>
           
                 <div class="profile-card-ctr">
-                   <button class="profile-card__button button--blue js-message-btn">Update</button>
-                   <button class="profile-card__button button--orange">Delete</button>     
+                   <button (click)="toggleUpdate(review.key)" class="profile-card__button button--blue js-message-btn">Update</button>
+                   <button (click)="onDeleteReview(review.key, i, review.category)" class="profile-card__button button--orange">Delete</button>     
                 </div>
               </div>
           
             </div>
           
           </div>
+          </div>
+
+          <div *ngIf="isUpdating==review.key">
+
+            <div>
+              <button class="profile-card__button button--blue js-message-btn" (click)="isUpdating=''"><a>Go Back!</a></button>
+           </div>
+            <div class="container-fluid title-bar">
+              <h3>Update a Review</h3>
+          </div>
+           <div class="new-body">
+              <div class="container">
+                 <form (ngSubmit)="onUpdateReview(updateForm, review.key, i, review.category)" #updateForm="ngForm">
+                    <div class="form-row">
+                       <div class="input-data">
+                          <input ngModel="{{review.name}}" name="name" type="text" required>
+                          <div class="underline"></div>
+                          <label for="">Name</label>
+                       </div>
+                    </div>
+          
+                    <div class="form-row">
+                      <div class="input-data">
+                         <input ngModel="{{review.rating}}" name="rating" type="number" required>
+                         <div class="underline"></div>
+                         <label for="rating">Rating</label>
+                      </div>
+                   </div>
+          
+                   <div class="form-row">
+                    <div class="input-data">
+                       <input ngModel="{{review.price}}" name="price" type="number" required>
+                       <div class="underline"></div>
+                       <label for="price">Price</label>
+                    </div>
+                 </div>
+                    
+                    <div class="form-row">
+                      <div class="input-data">
+                         <input ngModel="{{review.description}}" name="description" type="text" required>
+                         <div class="underline"></div>
+                         <label for="description">Description</label>
+                      </div>
+                   </div>
+                    
+                    <div class="form-row">
+                       <div class="input-data">
+                          <input ngModel="{{review.publisher}}" name="publisher" type="text" required>
+                          <div class="underline"></div>
+                          <label for="publisher">publisher</label>
+                       </div>
+                    </div>
+          
+                    <div class="form-row">
+                      <div class="input-data">
+                         <input ngModel="{{review.dateOfPublish}}" name="dateOfPublish" type="date" required>
+                         <div class="underline"></div>
+                         <label for="dateOfPublish">Date of Publish</label>
+                      </div>
+                   </div>
+                    
+                    <div class="form-row">
+                       <div class="input-data">
+                          <input ngModel="{{review.image}}" name="image" type="text" required>
+                          <div class="underline"></div>
+                          <label for="">image</label>
+                       </div>
+                    </div>
+                    
+                    <div class="form-row">
+                      <div class="input-data">
+                         <select required ngModel="{{review.category}}" name="category" id="category">
+                           <option value="laptops">Laptops</option>
+                           <option value="mobiles">Mobiles</option>
+                           <option value="entertainment">Entertainment</option>
+                           <option value="gaming">Gaming</option>
+                           <option value="headphones">Headphones</option>
+                           <option value="wearables">Wearables</option>
+                         </select>
+                         <div class="underline"></div>
+                         <label for="category">Category</label>
+                      </div>
+                   </div>
+                    
+                    <div class="form-row">
+                       <div class="input-data textarea">
+                          <textarea ngModel="{{review.review}}" name="review" rows="8" cols="80" required></textarea>
+                          <br />
+                          <div class="underline"></div>
+                          <label for="review">Write your Review</label>
+                          <br />
+                          <div class="form-row submit-btn">
+                             <div class="input-data">
+                                <div class="inner"></div>
+                                <input type="submit" value="submit">
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                 </form>
+              </div>
+           </div>
+
+          </div>
          </div>
          
        </div>
        <br><br><br>
+</div>
+</div>
+
+<div *ngIf="isAdding && isUpdating==''">
+
+  <div class="container-fluid title-bar">
+    <h3>Add an Article</h3>
+</div>
+ <div class="new-body">
+    <div class="container">
+       <form (ngSubmit)="onAddReview(addForm)" #addForm="ngForm">
+          <div class="form-row">
+             <div class="input-data">
+                <input ngModel name="name" type="text" required>
+                <div class="underline"></div>
+                <label for="">Name</label>
+             </div>
+          </div>
+
+          <div class="form-row">
+            <div class="input-data">
+               <input ngModel name="rating" type="number" required>
+               <div class="underline"></div>
+               <label for="rating">Rating</label>
+            </div>
+         </div>
+
+         <div class="form-row">
+          <div class="input-data">
+             <input ngModel name="price" type="number" required>
+             <div class="underline"></div>
+             <label for="price">Price</label>
+          </div>
+       </div>
+          
+          <div class="form-row">
+            <div class="input-data">
+               <input ngModel name="description" type="text" required>
+               <div class="underline"></div>
+               <label for="description">Description</label>
+            </div>
+         </div>
+          
+          <div class="form-row">
+             <div class="input-data">
+                <input ngModel name="publisher" type="text" required>
+                <div class="underline"></div>
+                <label for="">publisher</label>
+             </div>
+          </div>
+
+          <div class="form-row">
+            <div class="input-data">
+               <input ngModel name="dateOfPublish" type="date" required>
+               <div class="underline"></div>
+               <label for="dateOfPublish">Date of Publish</label>
+            </div>
+         </div>
+          
+          <div class="form-row">
+             <div class="input-data">
+                <input ngModel name="image" type="text" required>
+                <div class="underline"></div>
+                <label for="">image</label>
+             </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="input-data">
+               <select required ngModel name="category" id="category">
+                 <option value="laptops">Laptops</option>
+                 <option value="mobiles">Mobiles</option>
+                 <option value="entertainment">Entertainment</option>
+                 <option value="gaming">Gaming</option>
+                 <option value="headphones">Headphones</option>
+                 <option value="wearables">Wearables</option>
+               </select>
+               <div class="underline"></div>
+               <label for="category">Category</label>
+            </div>
+         </div>
+          
+          <div class="form-row">
+             <div class="input-data textarea">
+                <textarea ngModel name="review" rows="8" cols="80" required></textarea>
+                <br />
+                <div class="underline"></div>
+                <label for="review">Write your Review</label>
+                <br />
+                <div class="form-row submit-btn">
+                   <div class="input-data">
+                      <div class="inner"></div>
+                      <input type="submit" value="submit">
+                   </div>
+                </div>
+             </div>
+          </div>
+       </form>
+    </div>
+ </div>
+
 </div>
